@@ -1,8 +1,3 @@
-
-<img src="https://raw.githubusercontent.com/davidmarinangeli/RedditPostsTask/master/Screenshot_1582199390.png" width="300"/><img src="https://raw.githubusercontent.com/davidmarinangeli/RedditPostsTask/master/Screenshot_1582199424.png" width="300"/>
-
-
-
 # Sweet Bank
 Sweet Bank is an Android app in **Kotlin** that I developed to play around with some principles of the mobile development such as scope separation, design patterns ( such as MVVM ) and much more.
 
