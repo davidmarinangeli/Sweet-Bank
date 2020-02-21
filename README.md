@@ -51,10 +51,18 @@ I used some libraries such as:
 ## Next updates 
 
 🟢 Payee List - ADDED!
+
 🟡 Unit Testing
+
 🟡 UI Testing
+
 🔴 Payee creation
+
 🔴 Transaction creation
+
 🔴 Paged List on transactions ( Dashboard )
+
 🔴 Fix on UI scrolling effect
+
 🔴 Fixes on font size and text alignment on both Dashboard and Payee List
+
