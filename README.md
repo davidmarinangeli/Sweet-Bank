@@ -6,6 +6,8 @@ Sweet Bank is an Android app in **Kotlin** that I developed to play around with 
 
 I used Starling Bank APIs to fetch and send data to the Sandbox: this really helped me to focus on what really matters. Their APIs are very well documented and there is a lot to explore in their developer dashboard. [Try it](https://developer.starlingbank.com/docs)!
 
+Watch out, if you want to run the project, you will find out that the `NetworkUtils.kt` file is missing: it would contain the `BASE_URL` and the token, which is necessary to do all the APIs calls. 
+
 ## Software Architecture Pattern 🏛
 <img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/AppStructure.png" width="300"/>
 
