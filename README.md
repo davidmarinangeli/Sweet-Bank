@@ -33,11 +33,11 @@ I decided to split the project in more modules because of 1. shorter Build Time 
 I made a quick low-fidelity prototype of the app's menus with all the things I wanted to show. You can find the Dashboard Fragment, the Payees one, the (WIP) creation of a new Payee or the one that let's you perform a  money transfer to another account.
 I decided to use a `BottomAppBar` as a navigation component. It can be used also to host future features.
 
-<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/Dashboard%2BsendMoneyCreation.png" width="300"/>
-<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/Screenshot_20200220-191016.png" height="280"/>
+<img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/Dashboard%2BsendMoneyCreation.png" width="300"/>
+<img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/Screenshot_20200220-191016.png" height="300"/>
 
-<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/PayeeList%2BPayeeCreation.png" width="300"/>
-<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/Screenshot_20200220-191000.png" height="280"/>
+<img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/PayeeList%2BPayeeCreation.png" width="300"/>
+<img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/Screenshot_20200220-191000.png" height="300"/>
 
 
 ## Libraries
