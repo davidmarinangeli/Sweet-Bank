@@ -1,11 +1,13 @@
-# Sweet Bank
+
+<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/cover_image.png" width="700"/>
+
+# Sweet Bank 🍬
 Sweet Bank is an Android app in **Kotlin** that I developed to play around with some principles of the mobile development such as scope separation, design patterns ( such as MVVM ) and much more.
 
 I used Starling Bank APIs to fetch and send data to the Sandbox: this really helped me to focus on what really matters. Their APIs are very well documented and there is a lot to explore in their developer dashboard. [Try it](https://developer.starlingbank.com/docs)!
 
-## Software Architecture Pattern
-
-><img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/AppStructure.png" width="300"/>
+## Software Architecture Pattern 🏛
+<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/AppStructure.png" width="300"/>
 
 I used the MVVM pattern to make the code more readable, scalable and easily testable. To do this I divided the project into **view slices** and three layers:
 
@@ -25,10 +27,18 @@ As for now, there are seven modules that fulfill a specific view or purpose:
 6. *payees* - the module that handles the whole stack for the **Payees Fragment** in the home: in the future will handle also the Payee creation.
 7. *resources* - take care and share all the common resources ( fonts, drawables, colors and so on )
 
-I decided to split the project in more modules because of 1. shorter Build Time 2. Separation of the Scopes 3. Cleaner code and better architecture.
+I decided to split the project in more modules because of 1. shorter Build Time 2. Separation of the Scopes 3. Cleaner code and better architecture
 
-## UI
-WIP
+## UI 🎨
+I made a quick low-fidelity prototype of the app's menus with all the things I wanted to show. You can find the Dashboard Fragment, the Payees one, the (WIP) creation of a new Payee or the one that let's you perform a  money transfer to another account.
+I decided to use a `BottomAppBar` as a navigation component. It can be used also to host future features.
+
+<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/Dashboard%2BsendMoneyCreation.png" width="300"/>
+<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/Screenshot_20200220-191016.png" height="300"/>
+
+<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/PayeeList%2BPayeeCreation.png" width="300"/>
+<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/Screenshot_20200220-191000.png" height="300"/>
+
 
 ## Libraries
 I used some libraries such as:
@@ -37,3 +47,16 @@ I used some libraries such as:
  3. Retrofit
  4. Kotlin Coroutines
  5. Moshi
+ 6. Google Android Material
+ 7. 
+
+## Next updates 
+
+🟢 Payee List - ADDED!
+🟡 Unit Testing
+🟡 UI Testing
+🔴 Payee creation
+🔴 Transaction creation
+🔴 Paged List on transactions ( Dashboard )
+🔴 Fix on UI scrolling effect
+🔴 Fixes on font size and text alignment on both Dashboard and Payee List
