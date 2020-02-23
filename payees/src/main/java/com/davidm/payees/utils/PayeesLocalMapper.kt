@@ -26,8 +26,10 @@ class PayeesLocalMapper {
         if (payee.firstName !== null && payee.lastName !== null) {
             firstAndLastName = "${payee.firstName} ${payee.lastName}"
             initials = "${payee.firstName[0]}${payee.lastName[0]}"
-        } else {
+        } else if(payee.payeeName.isNotEmpty()){
             initials = "${payee.payeeName[0]}${payee.payeeName[1]}"
+        } else {
+            initials = ""
         }
         val numberOfAccounts = if (payee.accounts.size > 1) {
             "${payee.accounts.size} accounts"
