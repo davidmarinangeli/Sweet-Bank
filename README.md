@@ -54,7 +54,11 @@ I used some libraries such as:
 
 🟢 Payee List - ADDED!
 
-🟡 Unit Testing
+🟢 Unit Testing - Payee Local mapper
+
+🟡 Unit Testing - Dashboard date and currency converter
+
+🟡 Unit Testing - Dashboard ViewModel
 
 🟡 UI Testing
 
