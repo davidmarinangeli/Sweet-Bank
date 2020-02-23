@@ -64,7 +64,7 @@ I used some libraries such as:
 
 🔴 Paged List on transactions ( Dashboard )
 
-🔴 Fix on UI scrolling effect
+🔴 Better handling of network error / empty lists
 
 🔴 Fixes on font size and text alignment on both Dashboard and Payee List
 
