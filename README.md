@@ -62,6 +62,8 @@ I used some libraries such as:
 
 🟢 Fixes on font size and text alignment on both Dashboard and Payee List
 
+🟡 Support for accounts with multiple currencies, balances and transactions
+
 🟡 Unit Testing - Dashboard date and currency converter
 
 🟡 Unit Testing - Dashboard ViewModel
