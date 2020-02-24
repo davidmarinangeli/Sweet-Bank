@@ -48,15 +48,24 @@ I used some libraries such as:
  4. Kotlin Coroutines
  5. Moshi
  6. Google Android Material
- 7. 
+ 7. JUnit4 / Coroutine-test
+ 8. Mockk
 
 ## Next updates 
 
 🟢 Payee List - ADDED!
 
-🟡 Unit Testing
+🟢 Unit Testing - Payee Local mapper
+
+🟡 Unit Testing - Dashboard date and currency converter
+
+🟡 Unit Testing - Dashboard ViewModel
 
 🟡 UI Testing
+
+🟡 New Color palette
+
+🟡 Fixes on font size and text alignment on both Dashboard and Payee List
 
 🔴 Payee creation
 
@@ -65,6 +74,4 @@ I used some libraries such as:
 🔴 Paged List on transactions ( Dashboard )
 
 🔴 Better handling of network errors / empty lists
-
-🔴 Fixes on font size and text alignment on both Dashboard and Payee List
 
