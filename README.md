@@ -48,7 +48,8 @@ I used some libraries such as:
  4. Kotlin Coroutines
  5. Moshi
  6. Google Android Material
- 7. 
+ 7. JUnit4 / Coroutine-test
+ 8. Mockk
 
 ## Next updates 
 
@@ -62,6 +63,10 @@ I used some libraries such as:
 
 🟡 UI Testing
 
+🟡 New Color palette
+
+🟡 Fixes on font size and text alignment on both Dashboard and Payee List
+
 🔴 Payee creation
 
 🔴 Transaction creation
@@ -69,6 +74,4 @@ I used some libraries such as:
 🔴 Paged List on transactions ( Dashboard )
 
 🔴 Better handling of network errors / empty lists
-
-🔴 Fixes on font size and text alignment on both Dashboard and Payee List
 
