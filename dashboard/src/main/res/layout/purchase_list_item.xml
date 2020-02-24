@@ -41,18 +41,23 @@
         app:layout_constraintTop_toTopOf="@+id/title"
         tools:text="$550,80" />
 
-    <androidx.cardview.widget.CardView
+    <ImageView
         android:id="@+id/spendingCategoryBox"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:cardBackgroundColor="@color/orangeLowOpacity"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="0dp"
+        android:src="@drawable/ic_attach_money_black_24dp"
+        android:padding="8dp"
+        android:tint="@color/colorAccentDark"
+        android:background="@drawable/cardshape_background"
+        android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/icon_of_the_transaction">
+
+    </ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

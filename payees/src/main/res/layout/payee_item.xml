@@ -14,7 +14,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/gray600"
-        app:layout_constraintStart_toEndOf="@+id/payeeNameIconCard"
+        app:layout_constraintStart_toEndOf="@+id/initials"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="PayeeName" />
 
@@ -28,98 +28,45 @@
         app:layout_constraintTop_toBottomOf="@+id/payeeName"
         tools:text="Ringo Star With a Longer Name" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/payeeNameIconCard"
+    <TextView
+        android:id="@+id/initials"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        app:cardBackgroundColor="@color/colorPrimaryLowOpacity"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/accountNumberCard"
+        android:background="@drawable/cardshape_background"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:gravity="center|center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/payeeName">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="PN" />
 
-        <TextView
-            android:id="@+id/initials"
-            android:textAllCaps="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp"
-            tools:text="PN" />
-    </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/accountNumberCard"
+    <TextView
+        android:id="@+id/accountNumberText"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        app:cardBackgroundColor="@color/orangeLowOpacity"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="0dp"
+        android:background="@drawable/cardshape_background"
+        android:backgroundTint="@color/colorAccentDark"
+        android:paddingStart="8dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="4dp"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccentDark"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/firstAndLastName"
-        app:layout_constraintTop_toBottomOf="@+id/firstAndLastName">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/accountNumberText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="4dp"
-                android:textAllCaps="true"
-                android:textColor="@color/colorAccent"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="1 ACCOUNT" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/accountTypeCard"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        app:cardBackgroundColor="@color/orangeLowOpacity"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/accountNumberCard"
-        app:layout_constraintStart_toEndOf="@+id/accountNumberCard"
-        app:layout_constraintTop_toTopOf="@+id/accountNumberCard"
-        app:layout_constraintVertical_bias="0.0">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/accountTypeIcon"
-                android:layout_width="18dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:tint="@color/colorAccent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_person_black_24dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/firstAndLastName"
+        tools:text="1 ACCOUNT" />
 
     <ImageView
         android:id="@+id/chevron"

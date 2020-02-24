@@ -3,8 +3,10 @@ package com.davidm.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.davidm.utils.DashboardLocalMapper
@@ -22,7 +24,7 @@ class DashboardListAdapter : RecyclerView.Adapter<DashboardListAdapter.Dashboard
         val mCounterParty: TextView = itemView.title
         val mDate: TextView = itemView.date
         val mAmount: TextView = itemView.amount
-        val mSpendingCategory: CardView = itemView.spendingCategoryBox
+        val mSpendingCategory: ImageView = itemView.spendingCategoryBox
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardViewHolder {
@@ -38,10 +40,14 @@ class DashboardListAdapter : RecyclerView.Adapter<DashboardListAdapter.Dashboard
     override fun onBindViewHolder(holder: DashboardViewHolder, position: Int) {
         val item = data[position]
         holder.mCounterParty.text = item.counterPartyName
-        holder.mSpendingCategory.setCardBackgroundColor(
-            ResourcesCompat.getColor(holder.itemView.resources, item.spendingCategoryColor, null)
-        )
+        holder.mSpendingCategory.setImageResource(item.spendingCategoryIcon)
         holder.mDate.text = item.date
         holder.mAmount.text = item.amount
+        holder.mAmount.setTextColor(
+            ContextCompat.getColor(
+                holder.itemView.context,
+                item.amountColor
+            )
+        )
     }
 }

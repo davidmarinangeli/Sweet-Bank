@@ -13,7 +13,8 @@ class DashboardLocalMapper {
     data class LocalPurchase(
         val counterPartyName: String,
         val amount: String,
-        val spendingCategoryColor: Int,
+        val amountColor: Int,
+        val spendingCategoryIcon: Int,
         val date: String
     )
 
@@ -26,11 +27,11 @@ class DashboardLocalMapper {
         formatter.currency = Currency.getInstance(purchase.amount.currency)
         val finalDate = dateFormatter.parse(purchase.transactionTime)
 
-        val color: Int = when (purchase.spendingCategory) {
-            SpendingCategory.EATING_OUT -> R.color.orangeLowOpacity
-            SpendingCategory.INCOME -> R.color.greenLowOpacity
-            SpendingCategory.PAYMENTS -> R.color.lightBlueLowOpacity
-            SpendingCategory.GENERAL -> R.color.colorPrimaryDark
+        val icon: Int = when (purchase.spendingCategory) {
+            SpendingCategory.EATING_OUT -> R.drawable.hamburger_solid
+            SpendingCategory.INCOME -> R.drawable.money_wave
+            SpendingCategory.PAYMENTS -> R.drawable.money_wave
+            SpendingCategory.GENERAL -> R.drawable.coins_solid
         }
 
         val absoluteAmount =
@@ -40,10 +41,16 @@ class DashboardLocalMapper {
             else -> "- $absoluteAmount"
         }
 
+        val amountColor = when (purchase.spendingCategory) {
+            SpendingCategory.INCOME -> R.color.positiveAmountGreen
+            else -> R.color.negativeAmountRed
+        }
+
         return LocalPurchase(
             counterPartyName = purchase.counterPartyName,
             amount = amount,
-            spendingCategoryColor = color,
+            amountColor = amountColor,
+            spendingCategoryIcon = icon,
             date = resultFormat.format(finalDate!!)
 
         )

@@ -22,7 +22,6 @@ class PayeeListAdapter : RecyclerView.Adapter<PayeeListAdapter.PayeeListViewHold
         val payeeName: TextView = itemView.payeeName
         val firstLastName: TextView = itemView.firstAndLastName
         val accountsNumber: TextView = itemView.accountNumberText
-        val accountTypeImage: ImageView = itemView.accountTypeIcon
         val initials : TextView = itemView.initials
     }
 
@@ -42,7 +41,6 @@ class PayeeListAdapter : RecyclerView.Adapter<PayeeListAdapter.PayeeListViewHold
         holder.payeeName.text = item.payeeName
         holder.firstLastName.text = item.firstAndLastName
         holder.accountsNumber.text = item.numberOfAccounts
-        holder.accountTypeImage.setImageResource(item.accountTypeIcon)
         holder.initials.text = item.initials
     }
 }

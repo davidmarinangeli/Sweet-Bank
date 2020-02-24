@@ -7,7 +7,6 @@ import com.davidm.payees.entities.PayeeType
 import com.davidm.payees.entities.Payees
 import com.davidm.payees.network.PayeesApi
 import com.davidm.payees.repository.PayeesRepository
-import com.github.testcoroutinesrule.TestCoroutineRule
 
 import io.mockk.coEvery
 import io.mockk.coVerify

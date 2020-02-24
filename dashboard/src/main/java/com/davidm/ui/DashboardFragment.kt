@@ -1,10 +1,12 @@
 package com.davidm.ui
 
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -40,6 +42,8 @@ class DashboardFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.purchase_list)
         val balanceCardTextView = view.findViewById<TextView>(R.id.balance_amount)
+        val emptyListImageView = view.findViewById<ImageView>(R.id.empty_list_illustration)
+
         viewModel =
             ViewModelProvider(this, viewModelFactory).get(DashboardViewModel::class.java)
 
@@ -58,7 +62,11 @@ class DashboardFragment : Fragment() {
         })
 
         viewModel.purchasesLiveData.observe(viewLifecycleOwner, Observer {
-            adapter.data = it
+            if(it.isEmpty()){
+                emptyListImageView.visibility = View.VISIBLE
+            } else {
+                adapter.data = it
+            }
         })
 
     }
