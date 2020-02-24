@@ -32,10 +32,9 @@ As for now, there are seven modules that fulfill a specific view or purpose:
 I decided to split the project in more modules because of 1. shorter Build Time 2. Separation of the Scopes 3. Cleaner code and better architecture
 
 ## UI 🎨
-I made a quick low-fidelity prototype of the app's menus with all the things I wanted to show. You can find the Dashboard Fragment, the Payees one, the (WIP) creation of a new Payee or the one that let's you perform a  money transfer to another account.
-I decided to use a `BottomAppBar` as a navigation component. It can be used also to host future features.
+I made a quick low-fidelity prototype of the app's menus with all the things I wanted to show. You can see the Dashboard Fragment and the Payees one from the pictures down below. Shoutout to my friend Claudio that gave me some help to improve the design!!
 
-Down below you can find the UI development of both Dashboard and Payees fragments
+I decided to use a `BottomAppBar` as a navigation component. It can be used also to host future features.
 
 <img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_dashboard.png" height="300"/>
 
