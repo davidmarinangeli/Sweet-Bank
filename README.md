@@ -44,13 +44,14 @@ I decided to use a `BottomAppBar` as a navigation component. It can be used also
 ## Libraries
 I used some libraries such as:
  1. Android Jetpack ( ViewModels, LiveData )
- 2. Dagger
- 3. Retrofit
- 4. Kotlin Coroutines
- 5. Moshi
- 6. Google Android Material
- 7. JUnit4 / Coroutine-test
- 8. Mockk
+ 2. ViewPager2
+ 3. Dagger
+ 4. Retrofit
+ 5. Kotlin Coroutines
+ 6. Moshi
+ 7. Google Android Material
+ 8. JUnit4 / Coroutine-test
+ 9. Mockk
 
 ## Next updates 
 
