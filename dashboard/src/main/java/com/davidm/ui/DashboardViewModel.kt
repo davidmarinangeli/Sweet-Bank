@@ -3,6 +3,7 @@ package com.davidm.ui
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.davidm.account.entities.Account
 import com.davidm.account.entities.AccountBalance
 import com.davidm.account.repository.AccountRepository
 import com.davidm.entities.Purchase
@@ -26,7 +27,7 @@ class DashboardViewModel @Inject constructor(
     private val converter = AmountConverter()
 
     val purchasesLiveData = MutableLiveData<List<DashboardLocalMapper.LocalPurchase>>()
-    val accountBalanceLiveData = MutableLiveData<String>()
+    val accountBalanceLiveData = MutableLiveData<DashboardLocalMapper.LocalAccountBalance>()
 
     init {
         getAccountBalance()

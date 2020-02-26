@@ -1,6 +1,5 @@
 package com.davidm.ui
 
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.davidm.utils.DashboardLocalMapper
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -42,6 +42,7 @@ class DashboardFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.purchase_list)
         val balanceCardTextView = view.findViewById<TextView>(R.id.balance_amount)
+        val balanceCentsTextView = view.findViewById<TextView>(R.id.cents)
         val emptyListImageView = view.findViewById<ImageView>(R.id.empty_list_illustration)
 
         viewModel =
@@ -58,7 +59,8 @@ class DashboardFragment : Fragment() {
         )
 
         viewModel.accountBalanceLiveData.observe(viewLifecycleOwner, Observer {
-            balanceCardTextView.text = it
+            balanceCardTextView.text = it.amount
+            balanceCentsTextView.text = it.amountCents
         })
 
         viewModel.purchasesLiveData.observe(viewLifecycleOwner, Observer {

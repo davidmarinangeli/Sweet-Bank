@@ -15,7 +15,4 @@ abstract class DashboardModule {
     @ContributesAndroidInjector
     abstract fun contributeDashboardFragmentInjector(): DashboardFragment
 
-    @ContributesAndroidInjector
-    abstract fun contributePayeeFragmentInjector(): PayeesFragment
-
 }

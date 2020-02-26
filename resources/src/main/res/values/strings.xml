@@ -6,4 +6,11 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_payees">Payees</string>
+    <string name="payee_name">Payee Name</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="business_name">Business Name</string>
+    <string name="create">Create</string>
+    <string name="create_a_new_payee">Create a new Payee</string>
 </resources>

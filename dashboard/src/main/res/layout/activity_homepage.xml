@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:src="@drawable/ic_add_white_24dp"
-        app:tint="@android:color/white"
+        app:tint="@android:color/black"
         app:backgroundTint="@color/colorAccent"
         app:layout_anchor="@id/bottomAppBar" />
 

@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.davidm.payees.ui.PayeeCreationFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
@@ -31,6 +32,20 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
         setSupportActionBar(bottomAppBar)
 
         view_pager.adapter = HomepageAdapter(this)
+
+        val bottomDialogFragment =
+            PayeeCreationFragment()
+
+        fab.setOnClickListener {
+            if (view_pager.currentItem == 1) {
+                bottomDialogFragment.show(
+                    supportFragmentManager,
+                    "new_payee_dialog_fragment"
+                )
+            }
+
+        }
+
         view_pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)

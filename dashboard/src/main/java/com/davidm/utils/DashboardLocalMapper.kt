@@ -18,6 +18,12 @@ class DashboardLocalMapper {
         val date: String
     )
 
+    data class LocalAccountBalance(
+        val amount: String,
+        val amountCents: String,
+        val currency: String
+    )
+
     fun convertPurchases(converter: AmountConverter, purchase: Purchase): LocalPurchase {
 
         val formatter: NumberFormat = NumberFormat.getCurrencyInstance()
@@ -57,11 +63,23 @@ class DashboardLocalMapper {
 
     }
 
-    fun convertBalanceAmount(converter: AmountConverter, balance: AccountBalance): String {
+    fun convertBalanceAmount(
+        converter: AmountConverter,
+        balance: AccountBalance
+    ): LocalAccountBalance {
 
         val formatter = NumberFormat.getCurrencyInstance()
         formatter.currency = Currency.getInstance(balance.amount.currency)
 
-        return formatter.format(converter.convertAmountToDouble(balance.amount.minorUnits))
+        val amount: String =
+            formatter.format(converter.convertAmountToDouble(balance.amount.minorUnits))
+
+        val amountMain = amount.split('.')
+
+        return LocalAccountBalance(
+            amount = amountMain[0],
+            amountCents = ".${amountMain[1]}",
+            currency = balance.amount.currency
+        )
     }
 }

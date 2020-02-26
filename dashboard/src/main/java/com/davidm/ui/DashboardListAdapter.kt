@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.davidm.utils.DashboardLocalMapper
+import kotlinx.android.synthetic.main.balance_card_item.view.*
 import kotlinx.android.synthetic.main.purchase_list_item.view.*
 
 class DashboardListAdapter : RecyclerView.Adapter<DashboardListAdapter.DashboardViewHolder>() {
