@@ -65,13 +65,13 @@ I used some libraries such as:
 
 🟡 Support for accounts with multiple currencies, balances and transactions
 
+🟡 Payee creation
+
 🟡 Unit Testing - Dashboard date and currency converter
 
 🟡 Unit Testing - Dashboard ViewModel
 
 🟡 UI Testing
-
-🔴 Payee creation
 
 🔴 Transaction creation
 
