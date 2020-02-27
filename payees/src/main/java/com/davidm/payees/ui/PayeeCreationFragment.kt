@@ -12,6 +12,8 @@ import com.davidm.payees.entities.PayeeType
 import com.davidm.payees.entities.defaultAccount
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.payee_creation_fragment.*
 import javax.inject.Inject
@@ -43,18 +45,32 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
             ViewModelProvider(this, viewModelFactory).get(PayeesViewModel::class.java)
 
 
+        val map: Map<TextInputLayout, TextInputEditText> =
+            mapOf(
+                Pair(payeeNameInputLayout, payeeNameEditText),
+                Pair(businessNameInputLayout, businessNameEditText)
+            )
 
         createButton.setOnClickListener {
-            if (payeeNameEditText.text.toString().isBlank()) {
-                payeeInputLayout.error = "Error message"
-                payeeInputLayout.isErrorEnabled = true
-            } else {
 
-                payeeNameEditText.text
-                firstNameEditText.text
-                lastNameEditText.text
-                phoneNumberEditText.text
+            map.map { (layout, edittext) ->
+                if (edittext.text.toString().isBlank()) {
+                    layout.error = "The field is required"
+                } else {
+                    layout.error = null
+                }
+            }
 
+            var valid = true
+            map.forEach {
+                if (it.key.error.isNullOrEmpty()) {
+                    it.key.isErrorEnabled = false
+                } else {
+                    valid = false
+                }
+            }
+
+            if (valid) {
                 val payeeToBeCreated = Payee(
                     listOf(defaultAccount),
                     businessNameEditText.text.toString(),
@@ -70,7 +86,6 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
                 )
 
                 viewModel.createPayee(payeeToBeCreated)
-
                 viewModel.creationResponseLiveData.observe(viewLifecycleOwner, Observer {
 
                     dismiss()
@@ -85,15 +100,16 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
                         } else {
                             Snackbar.make(
                                 activity?.window?.decorView?.rootView!!,
-                                "There was an error: ${it.errors?.firstOrNull()}",
+                                "There was an error: ${it.errors?.get(0)?.error} , ${it.errors?.get(
+                                    0
+                                )?.error_description}",
                                 Snackbar.LENGTH_LONG
                             ).show()
                         }
                     }
                 })
-
-
             }
+
         }
 
     }

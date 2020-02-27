@@ -12,5 +12,9 @@ data class ConsentInformation(
 )
 
 data class ErrorMessage(
-    val message: String
+    val size: Int,
+    val error: String,
+    val error_description: String
 )
+
+val defaultError = ErrorMessage(10,"Generic error", "Generic error")

@@ -20,6 +20,7 @@
     <color name="fiftyPercentTransparency">#4DFFFFFF</color>
 
     <color name="gray400">#ACACAC</color>
+    <color name="gray500">#727272</color>
     <color name="gray600">#414141</color>
     <color name="black">#191919</color>
 
