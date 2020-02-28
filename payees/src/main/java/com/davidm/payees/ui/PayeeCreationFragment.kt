@@ -10,6 +10,8 @@ import com.davidm.payees.R
 import com.davidm.payees.entities.Payee
 import com.davidm.payees.entities.PayeeType
 import com.davidm.payees.entities.defaultAccount
+import com.davidm.payees.utils.isFormValid
+import com.davidm.payees.utils.searchAndSetErrorsOnForm
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -52,25 +54,10 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
             )
 
         createButton.setOnClickListener {
+            searchAndSetErrorsOnForm(map)
+            if (isFormValid(map)) {
 
-            map.map { (layout, edittext) ->
-                if (edittext.text.toString().isBlank()) {
-                    layout.error = "The field is required"
-                } else {
-                    layout.error = null
-                }
-            }
-
-            var valid = true
-            map.forEach {
-                if (it.key.error.isNullOrEmpty()) {
-                    it.key.isErrorEnabled = false
-                } else {
-                    valid = false
-                }
-            }
-
-            if (valid) {
+                // we create a payee with the form's texts and some default values
                 val payeeToBeCreated = Payee(
                     listOf(defaultAccount),
                     businessNameEditText.text.toString(),
@@ -81,15 +68,11 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
                     payeeNameEditText.text.toString(),
                     PayeeType.BUSINESS,
                     "0",
-                    phoneNumberEditText.text.toString()
-
-                )
+                    phoneNumberEditText.text.toString())
 
                 viewModel.createPayee(payeeToBeCreated)
                 viewModel.creationResponseLiveData.observe(viewLifecycleOwner, Observer {
-
                     dismiss()
-
                     if ((activity?.window?.decorView?.rootView !== null)) {
                         if (it.errors.isNullOrEmpty() && it.success) {
                             Snackbar.make(

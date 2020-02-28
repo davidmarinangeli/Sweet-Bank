@@ -63,9 +63,11 @@ I used some libraries such as:
 
 🟢 Fixes on font size and text alignment on both Dashboard and Payee List
 
+🟢 Payee creation
+
 🟡 Support for accounts with multiple currencies, balances and transactions
 
-🟡 Payee creation
+🟡 Better validation on Payee Creation
 
 🟡 Unit Testing - Dashboard date and currency converter
 
