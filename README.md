@@ -40,6 +40,9 @@ I decided to use a `BottomAppBar` as a navigation component. It can be used also
 
 <img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_payees.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_payees.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_payees.png" height="300"/>
 
+The Payee creation has been developed with the `Bottom Sheet Dialog` official library and using the standard `TextInputLayout` of Google Material.
+
+<img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/payee_creation.png" height="300"/>
 
 ## Libraries
 I used some libraries such as:
@@ -65,9 +68,9 @@ I used some libraries such as:
 
 🟢 Payee creation
 
-🟡 Support for accounts with multiple currencies, balances and transactions
+🟢 Better validation on Payee Creation
 
-🟡 Better validation on Payee Creation
+🟡 Support for accounts with multiple currencies, balances and transactions
 
 🟡 Unit Testing - Dashboard date and currency converter
 
