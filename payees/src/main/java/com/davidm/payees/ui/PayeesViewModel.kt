@@ -34,7 +34,7 @@ class PayeesViewModel @Inject constructor(
 
     fun getPayees() {
 
-        GlobalScope.launchIdling {
+        coroutineScope.launchIdling {
 
             val result = withContext(Dispatchers.IO) {
 
@@ -48,15 +48,6 @@ class PayeesViewModel @Inject constructor(
             }
             payeesLiveData.postValue(result.map { mapper.convertPayee(it) })
 
-        }
-    }
-
-    fun observePayees(): List<PayeesLocalMapper.LocalPayee> {
-        val result = payeesRepository.observeResult()
-        return if (result.value !== null) {
-            result.value!!.map { mapper.convertPayee(it) }
-        } else {
-            emptyList()
         }
     }
 

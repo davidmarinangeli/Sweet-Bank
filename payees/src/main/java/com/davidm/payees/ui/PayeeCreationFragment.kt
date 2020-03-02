@@ -60,7 +60,10 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
 
 
         viewModel =
-            ViewModelProvider(this, viewModelFactory).get(PayeesViewModel::class.java)
+            ViewModelProvider(
+                activity!!.viewModelStore,
+                viewModelFactory
+            ).get(PayeesViewModel::class.java)
 
 
         val map: Map<TextInputLayout, TextInputEditText> =
@@ -88,32 +91,37 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
                 )
 
                 viewModel.createPayee(payeeToBeCreated)
-                viewModel.creationResponseLiveData.observe(viewLifecycleOwner, Observer {
-                    dismiss()
-                    if ((activity?.window?.decorView?.rootView !== null)) {
-                        if (it.errors.isNullOrEmpty() && it.success) {
-                            Snackbar.make(
-                                activity?.window?.decorView?.rootView!!,
-                                "Success! The Payee has been created",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-
-                            viewModel.getPayees()
-
-                        } else {
-                            Snackbar.make(
-                                activity?.window?.decorView?.rootView!!,
-                                "There was an error: ${it.errors?.get(0)?.error} , ${it.errors?.get(
-                                    0
-                                )?.error_description}",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                        }
-                    }
-                })
+                
+                showSnackBarAndRefreshList()
             }
 
         }
 
+    }
+
+    private fun showSnackBarAndRefreshList() {
+        viewModel.creationResponseLiveData.observe(viewLifecycleOwner, Observer {
+            if ((activity?.window?.decorView?.rootView !== null)) {
+                if (it.errors.isNullOrEmpty() && it.success) {
+                    Snackbar.make(
+                        activity?.window?.decorView?.rootView!!,
+                        "Success! The Payee has been created",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+
+                    viewModel.getPayees()
+
+                } else {
+                    Snackbar.make(
+                        activity?.window?.decorView?.rootView!!,
+                        "There was an error: ${it.errors?.get(0)?.error} , ${it.errors?.get(
+                            0
+                        )?.error_description}",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+            }
+            dismiss()
+        })
     }
 }

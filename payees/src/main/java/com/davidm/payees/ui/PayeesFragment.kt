@@ -50,7 +50,7 @@ class PayeesFragment : Fragment() {
 
         payeeListAdapter = PayeeListAdapter()
         viewModel =
-            ViewModelProvider(this, viewModelFactory).get(PayeesViewModel::class.java)
+            ViewModelProvider(activity!!.viewModelStore, viewModelFactory).get(PayeesViewModel::class.java)
 
         recyclerView.adapter = payeeListAdapter
         recyclerView.addItemDecoration(
@@ -60,8 +60,11 @@ class PayeesFragment : Fragment() {
             )
         )
 
-        viewModel.getPayees()
-        payeeListAdapter.data = viewModel.observePayees()
+        viewModel.payeesLiveData.observe(viewLifecycleOwner, Observer {
+            payeeListAdapter.data = it
+        })
+
+
 
     }
 }
