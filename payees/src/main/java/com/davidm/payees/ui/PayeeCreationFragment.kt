@@ -1,5 +1,6 @@
 package com.davidm.payees.ui
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.davidm.payees.entities.PayeeType
 import com.davidm.payees.entities.defaultAccount
 import com.davidm.payees.utils.isFormValid
 import com.davidm.payees.utils.searchAndSetErrorsOnForm
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -19,6 +22,7 @@ import com.google.android.material.textfield.TextInputLayout
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.payee_creation_fragment.*
 import javax.inject.Inject
+
 
 class PayeeCreationFragment : BottomSheetDialogFragment() {
 
@@ -40,8 +44,20 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.payee_creation_fragment, container, false)
     }
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        super.onCreateDialog(savedInstanceState)
+
+        val dialog: BottomSheetDialog =
+            super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+
+        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+
+        return dialog
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         viewModel =
             ViewModelProvider(this, viewModelFactory).get(PayeesViewModel::class.java)
@@ -68,7 +84,8 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
                     payeeNameEditText.text.toString(),
                     PayeeType.BUSINESS,
                     "0",
-                    phoneNumberEditText.text.toString())
+                    phoneNumberEditText.text.toString()
+                )
 
                 viewModel.createPayee(payeeToBeCreated)
                 viewModel.creationResponseLiveData.observe(viewLifecycleOwner, Observer {
@@ -80,6 +97,9 @@ class PayeeCreationFragment : BottomSheetDialogFragment() {
                                 "Success! The Payee has been created",
                                 Snackbar.LENGTH_LONG
                             ).show()
+
+                            viewModel.getPayees()
+
                         } else {
                             Snackbar.make(
                                 activity?.window?.decorView?.rootView!!,

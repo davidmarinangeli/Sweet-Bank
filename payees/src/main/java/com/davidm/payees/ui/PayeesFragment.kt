@@ -21,6 +21,7 @@ class PayeesFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+
     private lateinit var viewModel: PayeesViewModel
     private lateinit var payeeListAdapter: PayeeListAdapter
 
@@ -31,7 +32,8 @@ class PayeesFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -58,9 +60,8 @@ class PayeesFragment : Fragment() {
             )
         )
 
-        viewModel.payeesLiveData.observe(viewLifecycleOwner, Observer {
-            payeeListAdapter.data = it
-        })
+        viewModel.getPayees()
+        payeeListAdapter.data = viewModel.observePayees()
 
     }
 }

@@ -1,5 +1,6 @@
 package com.davidm.payees.repository
 
+import androidx.lifecycle.MutableLiveData
 import com.davidm.payees.entities.ErrorMessage
 import com.davidm.payees.entities.Payee
 import com.davidm.payees.entities.PayeeCreationResponse
@@ -11,20 +12,25 @@ import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
 import retrofit2.Response
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class PayeesRepository @Inject constructor(
     private val payeesApi: PayeesApi
 ) {
+
+    private val payeesLiveData = MutableLiveData<List<Payee>>()
 
     /**
      * This method will retrieve the list of Payees for the account
      */
     suspend fun retrievePayees(
     ): List<Payee> {
-        return withContext(Dispatchers.IO) {
+        val result = withContext(Dispatchers.IO) {
             return@withContext payeesApi.getPayees().payees
         }
-
+        payeesLiveData.postValue(result)
+        return result
     }
 
     /**
@@ -50,6 +56,8 @@ class PayeesRepository @Inject constructor(
         }
 
     }
+
+    fun observeResult() = payeesLiveData
 
     // hmm, I should use the moshi instance that Dagger provides!
     private fun convertErrorBody(throwable: ResponseBody?): ErrorMessage {

@@ -1,14 +1,15 @@
 package com.davidm.payees.ui
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import androidx.test.espresso.idling.CountingIdlingResource
 import com.davidm.payees.entities.ErrorMessage
 import com.davidm.payees.entities.Payee
 import com.davidm.payees.entities.PayeeCreationResponse
 import com.davidm.payees.entities.defaultError
 import com.davidm.payees.repository.PayeesRepository
 import com.davidm.payees.utils.PayeesLocalMapper
+import com.davidm.payees.utils.launchIdling
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.*
 import okhttp3.ResponseBody
@@ -22,17 +23,18 @@ class PayeesViewModel @Inject constructor(
 
     private val coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
-    val payeesLiveData = MutableLiveData<List<PayeesLocalMapper.LocalPayee>>()
+    var payeesLiveData = MutableLiveData<List<PayeesLocalMapper.LocalPayee>>()
     val creationResponseLiveData = MutableLiveData<PayeeCreationResponse>()
     val mapper = PayeesLocalMapper()
+
 
     init {
         getPayees()
     }
 
-    private fun getPayees() {
+    fun getPayees() {
 
-        coroutineScope.launch {
+        GlobalScope.launchIdling {
 
             val result = withContext(Dispatchers.IO) {
 
@@ -45,6 +47,16 @@ class PayeesViewModel @Inject constructor(
                 }
             }
             payeesLiveData.postValue(result.map { mapper.convertPayee(it) })
+
+        }
+    }
+
+    fun observePayees(): List<PayeesLocalMapper.LocalPayee> {
+        val result = payeesRepository.observeResult()
+        return if (result.value !== null) {
+            result.value!!.map { mapper.convertPayee(it) }
+        } else {
+            emptyList()
         }
     }
 
@@ -67,4 +79,5 @@ class PayeesViewModel @Inject constructor(
         }
 
     }
+
 }
