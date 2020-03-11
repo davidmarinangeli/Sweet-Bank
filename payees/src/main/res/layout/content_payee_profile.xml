@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.PayeeProfileActivity"
+    tools:showIn="@layout/activity_payee_profile">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp"
+        android:text="@string/general" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_info_list"
+        android:name="com.davidm.payees_profile.PayeeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".PayeeFragment"
+        tools:itemCount="4"
+        tools:listitem="@layout/payee_profile_info_item" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp"
+        android:text="@string/accounts" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_accounts_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/payee_profile_account_item"
+        tools:itemCount="2"/>
+
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

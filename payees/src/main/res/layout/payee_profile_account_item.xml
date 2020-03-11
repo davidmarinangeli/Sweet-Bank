@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/account_number"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/cardshape_background"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bankIdentifier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/accountIdentifier"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/accountIdentifier"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:lineSpacingExtra="18sp"
+        tools:text="00000825"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/defaultBadge"
+        app:layout_constraintStart_toEndOf="@+id/account_number"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:maxLines="2"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/defaultBadge"
+        app:layout_constraintStart_toEndOf="@+id/account_number"
+        app:layout_constraintTop_toBottomOf="@+id/accountIdentifier"
+        tools:text="@string/large_text" />
+
+    <TextView
+        android:id="@+id/bankIdentifier"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:textSize="13sp"
+        tools:text="204514"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/defaultBadge"
+        app:layout_constraintStart_toEndOf="@+id/account_number"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+    <TextView
+        android:id="@+id/defaultBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/cardshape_background"
+        android:backgroundTint="@color/colorAccent"
+        android:padding="4dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="default" />
+</androidx.constraintlayout.widget.ConstraintLayout>

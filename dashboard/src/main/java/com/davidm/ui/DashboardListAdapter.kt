@@ -50,5 +50,7 @@ class DashboardListAdapter : RecyclerView.Adapter<DashboardListAdapter.Dashboard
                 item.amountColor
             )
         )
+
+
     }
 }

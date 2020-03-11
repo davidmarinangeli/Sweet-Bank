@@ -3,7 +3,8 @@
     package="com.davidm.payees">
 
     <application>
-        <activity android:name=".ui.PayeeCreationFragment"></activity>
+        <activity android:name=".ui.PayeeCreationFragment" />
+        <activity android:name=".ui.PayeeProfileActivity" />
     </application>
 
 </manifest>

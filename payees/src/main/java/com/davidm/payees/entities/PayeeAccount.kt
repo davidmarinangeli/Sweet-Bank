@@ -1,7 +1,10 @@
 package com.davidm.payees.entities
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
+@Parcelize
 data class PayeeAccount(
     val accountIdentifier: String,
     val bankIdentifier: String,
@@ -10,7 +13,7 @@ data class PayeeAccount(
     val defaultAccount: Boolean?,
     val description: String?,
     val payeeAccountUid: String?
-)
+): Parcelable
 
 val defaultAccount: PayeeAccount = PayeeAccount(
     accountIdentifier = "00000825",

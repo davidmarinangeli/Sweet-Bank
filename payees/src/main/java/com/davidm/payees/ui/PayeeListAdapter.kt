@@ -1,10 +1,13 @@
 package com.davidm.payees.ui
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.davidm.payees.R
 import com.davidm.payees.utils.PayeesLocalMapper
@@ -23,6 +26,7 @@ class PayeeListAdapter : RecyclerView.Adapter<PayeeListAdapter.PayeeListViewHold
         val firstLastName: TextView = itemView.firstAndLastName
         val accountsNumber: TextView = itemView.accountNumberText
         val initials : TextView = itemView.initials
+        val parent: ConstraintLayout = itemView.payeeItemParentView
     }
 
 
@@ -42,5 +46,12 @@ class PayeeListAdapter : RecyclerView.Adapter<PayeeListAdapter.PayeeListViewHold
         holder.firstLastName.text = item.firstAndLastName
         holder.accountsNumber.text = item.numberOfAccounts
         holder.initials.text = item.initials
+        holder.parent.setOnClickListener {
+            val intent = Intent(holder.itemView.context, PayeeProfileActivity::class.java)
+
+            intent.putExtra("profileData", item)
+            startActivity(holder.itemView.context, intent, null)
+
+        }
     }
 }

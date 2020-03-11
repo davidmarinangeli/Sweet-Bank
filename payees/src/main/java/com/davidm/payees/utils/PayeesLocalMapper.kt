@@ -1,23 +1,31 @@
 package com.davidm.payees.utils
 
+import android.os.Parcelable
+import com.davidm.account.entities.Account
 import com.davidm.account.entities.AccountBalance
 import com.davidm.payees.R
 import com.davidm.payees.entities.Payee
+import com.davidm.payees.entities.PayeeAccount
 import com.davidm.payees.entities.PayeeType
+import kotlinx.android.parcel.Parcelize
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PayeesLocalMapper {
 
+    @Parcelize
     data class LocalPayee(
         val payeeName: String,
         val firstAndLastName: String,
         val numberOfAccounts: String,
+        val accounts: List<PayeeAccount>,
         val accountTypeIcon: Int,
-        val initials: String
+        val initials: String,
+        val businessName: String?,
+        val phoneNumber: String?
 
-    )
+    ) : Parcelable
 
     fun convertPayee(payee: Payee): LocalPayee {
 
@@ -48,8 +56,10 @@ class PayeesLocalMapper {
             firstAndLastName = firstAndLastName,
             numberOfAccounts = numberOfAccounts,
             accountTypeIcon = payeeType,
-            initials = initials
-
+            initials = initials,
+            businessName = payee.businessName,
+            phoneNumber = payee.phoneNumber,
+            accounts = payee.accounts
         )
 
     }
