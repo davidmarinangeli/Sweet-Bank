@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.davidm.payees.R
 import com.davidm.payees_profile.utils.PayeeProfileInfoConverter
@@ -21,13 +22,15 @@ class PayeeProfileInfoAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        holder.mIdView.text = item.text
+        holder.textView.text = item.text.capitalize()
+        holder.imageView.setImageResource(item.icon)
 
     }
 
     override fun getItemCount(): Int = data.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.payeeInfoText
+        val textView: TextView = mView.payeeInfoText
+        val imageView: ImageView = mView.payeeInfoIcon
     }
 }

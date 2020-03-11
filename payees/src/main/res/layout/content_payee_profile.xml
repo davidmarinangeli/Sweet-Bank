@@ -6,47 +6,69 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.PayeeProfileActivity"
+    android:background="@color/gray100"
     tools:showIn="@layout/activity_payee_profile">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="16dp"
-        android:text="@string/general" />
+        android:background="@android:color/white"
+        android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/profile_info_list"
-        android:name="com.davidm.payees_profile.PayeeFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="LinearLayoutManager"
-        tools:context=".PayeeFragment"
-        tools:itemCount="4"
-        tools:listitem="@layout/payee_profile_info_item" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="16dp"
+            android:paddingHorizontal="16dp"
+            android:fontFamily="@font/bold"
+            android:text="@string/general"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="16dp"
-        android:text="@string/accounts" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray100" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/profile_accounts_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="LinearLayoutManager"
-        tools:listitem="@layout/payee_profile_account_item"
-        tools:itemCount="2"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:elevation="2dp"
+            android:id="@+id/profile_info_list"
+            android:name="com.davidm.payees_profile.PayeeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="LinearLayoutManager"
+            tools:context=".PayeeFragment"
+            tools:itemCount="4"
+            tools:listitem="@layout/payee_profile_info_item" />
 
-</LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/gray100"
+            android:layout_height="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="16dp"
+            android:paddingHorizontal="16dp"
+            android:elevation="2dp"
+            android:fontFamily="@font/bold"
+            android:text="@string/accounts"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray100" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profile_accounts_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="LinearLayoutManager"
+            tools:itemCount="2"
+            android:elevation="2dp"
+            tools:listitem="@layout/payee_profile_account_item" />
+
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

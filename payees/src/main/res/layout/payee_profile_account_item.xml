@@ -72,12 +72,17 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/cardshape_background"
         android:backgroundTint="@color/colorAccent"
-        android:padding="4dp"
-        android:textStyle="bold"
+        android:paddingStart="8dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="4dp"
+        android:text="@string/default_account"
+        android:textAllCaps="true"
         android:textColor="@color/colorAccent"
         android:textSize="12sp"
-        android:textAllCaps="true"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="default" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

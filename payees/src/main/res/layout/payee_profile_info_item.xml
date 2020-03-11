@@ -22,13 +22,15 @@
 
     <TextView
         android:id="@+id/payeeInfoText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        tools:text="@string/generic_text"
+        android:layout_marginEnd="16dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/payeeInfoIcon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/payeeInfoIcon"
-        app:layout_constraintTop_toTopOf="@+id/payeeInfoIcon" />
+        app:layout_constraintTop_toTopOf="@+id/payeeInfoIcon"
+        tools:text="@string/generic_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
