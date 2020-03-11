@@ -70,6 +70,8 @@ I used some libraries such as:
 
 🟢 Better validation on Payee Creation
 
+🟢 Payee profile
+
 🟡 Support for accounts with multiple currencies, balances and transactions
 
 🟡 Unit Testing - Dashboard date and currency converter
