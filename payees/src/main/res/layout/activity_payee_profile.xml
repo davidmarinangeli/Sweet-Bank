@@ -18,26 +18,26 @@
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/toolbar_background"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            android:background="@drawable/toolbar_background"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_collapseMode="parallax"
-                android:src="@drawable/ic_work_black_24dp"
-                android:fitsSystemWindows="true"
                 android:layout_gravity="end|bottom"
-                android:background="@drawable/cardshape_background"
-                android:backgroundTint="@color/colorAccent"
-                android:tint="@color/colorAccent"
-                android:padding="8dp"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginVertical="24dp"
-                android:scaleType="centerCrop" />
+                android:background="@drawable/cardshape_background"
+                android:backgroundTint="@color/colorAccent"
+                android:fitsSystemWindows="true"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_work_black_24dp"
+                android:tint="@color/colorAccent"
+                app:layout_collapseMode="parallax" />
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"

@@ -1,13 +1,16 @@
 package com.davidm.payees.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.davidm.payees.R
-import com.davidm.payees.utils.PayeesLocalMapper
+import com.davidm.payees.utils.CollapsingBarListener
 import com.davidm.payees.utils.PayeeProfileInfoConverter
+import com.davidm.payees.utils.PayeesLocalMapper
+import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_payee_profile.*
 
 
@@ -24,6 +27,18 @@ class PayeeProfileActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
+        val payee = intent.extras?.getParcelable<PayeesLocalMapper.LocalPayee>("profileData")
+
+        app_bar.addOnOffsetChangedListener(object: CollapsingBarListener() {
+            override fun onStateChanged(appBarLayout: AppBarLayout?, state: State?) {
+                when(state){
+                    State.COLLAPSED -> toolbar_layout.title = payee?.payeeName
+                    State.EXPANDED -> toolbar_layout.title = "${payee?.payeeName?.take(12)}..."
+                    else -> null
+                }
+            }
+        })
+
         val infoRecyclerView = findViewById<RecyclerView>(R.id.profile_info_list)
         infoRecyclerView.addItemDecoration(
             DividerItemDecoration(
@@ -39,7 +54,6 @@ class PayeeProfileActivity : AppCompatActivity() {
             )
         )
 
-        val payee = intent.extras?.getParcelable<PayeesLocalMapper.LocalPayee>("profileData")
         if (payee !== null) {
 
             supportActionBar?.title = payee.payeeName
