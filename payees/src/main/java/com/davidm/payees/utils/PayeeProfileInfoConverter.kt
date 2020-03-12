@@ -1,6 +1,6 @@
-package com.davidm.payees_profile.utils
+package com.davidm.payees.utils
 
-import com.davidm.payees.utils.PayeesLocalMapper
+import com.davidm.resources.R
 
 class PayeeProfileInfoConverter {
 
@@ -15,7 +15,7 @@ class PayeeProfileInfoConverter {
         list.add(
             PayeeProfileInfo(
                 localPayee.firstAndLastName,
-                com.davidm.resources.R.drawable.ic_person_black_24dp
+                R.drawable.ic_person_black_24dp
             )
         )
 
@@ -23,7 +23,16 @@ class PayeeProfileInfoConverter {
             list.add(
                 PayeeProfileInfo(
                     localPayee.phoneNumber,
-                    com.davidm.resources.R.drawable.ic_phone_black_24dp
+                    R.drawable.ic_phone_black_24dp
+                )
+            )
+        }
+
+        if (!localPayee.dateOfBirth.isNullOrBlank()) {
+            list.add(
+                PayeeProfileInfo(
+                    localPayee.dateOfBirth,
+                    R.drawable.ic_perm_contact_calendar_black_24dp
                 )
             )
         }
@@ -32,7 +41,7 @@ class PayeeProfileInfoConverter {
             list.add(
                 PayeeProfileInfo(
                     localPayee.businessName,
-                    com.davidm.resources.R.drawable.ic_work_black_24dp
+                    R.drawable.ic_work_black_24dp
                 )
             )
         }

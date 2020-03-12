@@ -38,7 +38,6 @@ class DashboardViewModel @Inject constructor(
 
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-
         val endDate = calendar.time
 
         val startDate = run {

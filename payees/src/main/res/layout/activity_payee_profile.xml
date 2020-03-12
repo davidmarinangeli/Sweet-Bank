@@ -24,6 +24,21 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="parallax"
+                android:src="@drawable/ic_work_black_24dp"
+                android:fitsSystemWindows="true"
+                android:layout_gravity="end|bottom"
+                android:background="@drawable/cardshape_background"
+                android:backgroundTint="@color/colorAccent"
+                android:tint="@color/colorAccent"
+                android:padding="8dp"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginVertical="24dp"
+                android:scaleType="centerCrop" />
+
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"

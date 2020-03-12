@@ -1,16 +1,15 @@
 package com.davidm.payees.utils
 
 import android.os.Parcelable
-import com.davidm.account.entities.Account
-import com.davidm.account.entities.AccountBalance
 import com.davidm.payees.R
 import com.davidm.payees.entities.Payee
 import com.davidm.payees.entities.PayeeAccount
 import com.davidm.payees.entities.PayeeType
 import kotlinx.android.parcel.Parcelize
-import java.text.NumberFormat
+import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class PayeesLocalMapper {
 
@@ -23,7 +22,8 @@ class PayeesLocalMapper {
         val accountTypeIcon: Int,
         val initials: String,
         val businessName: String?,
-        val phoneNumber: String?
+        val phoneNumber: String?,
+        val dateOfBirth: String?
 
     ) : Parcelable
 
@@ -34,7 +34,7 @@ class PayeesLocalMapper {
         if (payee.firstName !== null && payee.lastName !== null) {
             firstAndLastName = "${payee.firstName} ${payee.lastName}"
             initials = "${payee.firstName[0]}${payee.lastName[0]}"
-        } else if(payee.payeeName.isNotEmpty()){
+        } else if (payee.payeeName.isNotEmpty()) {
             initials = "${payee.payeeName[0]}${payee.payeeName[1]}"
         } else {
             initials = ""
@@ -44,6 +44,25 @@ class PayeesLocalMapper {
         } else {
             "1 account"
         }
+
+
+        var calendarString: String? = null
+        if (payee.dateOfBirth !== null) {
+
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val formattedDate: Date? = dateFormat.parse(payee.dateOfBirth)
+
+            if (formattedDate !== null) {
+                val calendar = Calendar.getInstance()
+                calendar.time = formattedDate
+
+                calendarString =
+                    "${calendar.get(Calendar.DAY_OF_MONTH)} " +
+                            "${DateFormatSymbols().months[calendar.get(Calendar.MONTH)]} " +
+                            "${calendar.get(Calendar.YEAR)}"
+            }
+        }
+
 
         val payeeType = when (payee.payeeType) {
             PayeeType.INDIVIDUAL -> R.drawable.ic_person_black_24dp
@@ -59,7 +78,8 @@ class PayeesLocalMapper {
             initials = initials,
             businessName = payee.businessName,
             phoneNumber = payee.phoneNumber,
-            accounts = payee.accounts
+            accounts = payee.accounts,
+            dateOfBirth = calendarString
         )
 
     }

@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.davidm.payees.R
 import com.davidm.payees.utils.PayeesLocalMapper
-import com.davidm.payees_profile.utils.PayeeProfileInfoConverter
-import com.google.android.material.appbar.MaterialToolbar
+import com.davidm.payees.utils.PayeeProfileInfoConverter
 import kotlinx.android.synthetic.main.activity_payee_profile.*
 
 

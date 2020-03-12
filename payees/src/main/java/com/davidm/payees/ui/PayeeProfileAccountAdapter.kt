@@ -37,7 +37,7 @@ class PayeeProfileAccountAdapter(
 
     override fun getItemCount(): Int = data.size
 
-    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+    inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
         val number: TextView = mView.account_number
         val accountId: TextView = mView.accountIdentifier
         val description: TextView = mView.description

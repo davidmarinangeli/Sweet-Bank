@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.davidm.payees.R
-import com.davidm.payees_profile.utils.PayeeProfileInfoConverter
+import com.davidm.payees.utils.PayeeProfileInfoConverter
 import kotlinx.android.synthetic.main.payee_profile_info_item.view.*
 
 class PayeeProfileInfoAdapter(
@@ -29,7 +29,7 @@ class PayeeProfileInfoAdapter(
 
     override fun getItemCount(): Int = data.size
 
-    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+    inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
         val textView: TextView = mView.payeeInfoText
         val imageView: ImageView = mView.payeeInfoIcon
     }
