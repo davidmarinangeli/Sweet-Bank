@@ -1,5 +1,5 @@
 
-<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/cover_image.png" width="600"/>
+<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/cover_image.png" width="800"/>
 
 # Sweet Bank 🍬
 Sweet Bank is an Android app in **Kotlin** that I developed to play around with some principles of the mobile development such as scope separation, design patterns ( such as MVVM ) and much more.
@@ -47,6 +47,8 @@ The Payee creation has been developed with the `Bottom Sheet Dialog` official li
 From the Payee List the user can navigate to the Payee detail that shows its general data, the accounts and so on. The view is composed of a  `CollapsingToolbarLayout` , two `RecyclerViews` and sections' labels, all wrapped in a `NestedScrollView`.
 
 <img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_payee_profile.png" height="300"/>
+
+<img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/payee_profile.png" height="300"/>
 
 ## Libraries
 I used some libraries such as:
