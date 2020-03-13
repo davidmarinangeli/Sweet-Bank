@@ -42,7 +42,11 @@ I decided to use a `BottomAppBar` as a navigation component. It can be used also
 
 The Payee creation has been developed with the `Bottom Sheet Dialog` official library and using the standard `TextInputLayout` of Google Material.
 
-<img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/payee_creation.png" height="300"/>
+
+
+From the Payee List the user can navigate to the Payee detail that shows its general data, the accounts and so on. The view is composed of a  `CollapsingToolbarLayout` , two `RecyclerViews` and sections' labels, all wrapped in a `NestedScrollView`.
+
+<img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_payee_profile.png" height="300"/>
 
 ## Libraries
 I used some libraries such as:
