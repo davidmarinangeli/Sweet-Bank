@@ -24,8 +24,8 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    lateinit var dashboardFragment: DashboardFragment
-    lateinit var payeesFragment: PayeesFragment
+    val dashboardFragment: DashboardFragment by lazy { DashboardFragment() }
+    val payeesFragment: PayeesFragment by lazy { PayeesFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -48,11 +48,9 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
 //
 //        }
 
-        dashboardFragment = DashboardFragment()
-        payeesFragment = PayeesFragment()
-
         // initial position
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container_view_tag, dashboardFragment).commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_view_tag, dashboardFragment).commit()
 
         bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
         bottomAppBar.replaceMenu(R.menu.bottom_nav_menu)
@@ -73,14 +71,17 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
         when (item!!.itemId) {
             R.id.navigation_payees -> {
 
-                supportFragmentManager.beginTransaction().add(R.id.fragment_container_view_tag, payeesFragment).addToBackStack("home").commit()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container_view_tag, payeesFragment)
+                    .addToBackStack("home").commit()
 
                 bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
                 bottomAppBar.replaceMenu(R.menu.bottom_second_menu)
 
             }
             R.id.navigation_home -> {
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container_view_tag, dashboardFragment).commit()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container_view_tag, dashboardFragment).commit()
                 bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
                 bottomAppBar.replaceMenu(R.menu.bottom_nav_menu)
             }
@@ -90,15 +91,12 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
         return true
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        return if (keyCode == KeyEvent.KEYCODE_BACK && supportFragmentManager.findFragmentByTag("home") !== null ) {
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
             bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
             bottomAppBar.replaceMenu(R.menu.bottom_nav_menu)
-            onBackPressed()
-
-
-            false
-        } else super.onKeyDown(keyCode, event)
+        }
+        super.onBackPressed()
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
