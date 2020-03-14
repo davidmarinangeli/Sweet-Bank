@@ -6,7 +6,7 @@
         <item name="android:fontFamily">@font/lato</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
 
-        <item name="android:navigationBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
 
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

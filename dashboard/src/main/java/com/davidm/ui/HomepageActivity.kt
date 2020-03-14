@@ -1,12 +1,12 @@
 package com.davidm.ui
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
-import com.davidm.payees.ui.PayeeCreationFragment
+import com.davidm.payees.ui.PayeesFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
@@ -24,6 +24,9 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    lateinit var dashboardFragment: DashboardFragment
+    lateinit var payeesFragment: PayeesFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -31,37 +34,32 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
         setContentView(R.layout.activity_homepage)
         setSupportActionBar(bottomAppBar)
 
-        view_pager.adapter = HomepageAdapter(this)
 
-        val bottomDialogFragment =
-            PayeeCreationFragment()
+//        val bottomDialogFragment =
+//            PayeeCreationFragment()
+//
+//        fab.setOnClickListener {
+//            if (view_pager.currentItem == 1) {
+//                bottomDialogFragment.show(
+//                    supportFragmentManager,
+//                    "new_payee_dialog_fragment"
+//                )
+//            }
+//
+//        }
 
-        fab.setOnClickListener {
-            if (view_pager.currentItem == 1) {
-                bottomDialogFragment.show(
-                    supportFragmentManager,
-                    "new_payee_dialog_fragment"
-                )
-            }
+        dashboardFragment = DashboardFragment()
+        payeesFragment = PayeesFragment()
 
-        }
+        // initial position
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container_view_tag, dashboardFragment).commit()
 
-        view_pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                when (position) {
-                    0 -> {
-                        bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                        bottomAppBar.replaceMenu(R.menu.bottom_nav_menu)
-                    }
+        bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+        bottomAppBar.replaceMenu(R.menu.bottom_nav_menu)
 
-                    1 -> {
-                        bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                        bottomAppBar.replaceMenu(R.menu.bottom_second_menu)
-                    }
-                }
-            }
-        })
+//
+//        bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+//        bottomAppBar.replaceMenu(R.menu.bottom_second_menu)
 
     }
 
@@ -74,12 +72,15 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.navigation_payees -> {
-                view_pager.currentItem = 1
+
+                supportFragmentManager.beginTransaction().add(R.id.fragment_container_view_tag, payeesFragment).addToBackStack("home").commit()
+
                 bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
                 bottomAppBar.replaceMenu(R.menu.bottom_second_menu)
+
             }
             R.id.navigation_home -> {
-                view_pager.currentItem = 0
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container_view_tag, dashboardFragment).commit()
                 bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
                 bottomAppBar.replaceMenu(R.menu.bottom_nav_menu)
             }
@@ -87,6 +88,17 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
         }
 
         return true
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return if (keyCode == KeyEvent.KEYCODE_BACK && supportFragmentManager.findFragmentByTag("home") !== null ) {
+            bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+            bottomAppBar.replaceMenu(R.menu.bottom_nav_menu)
+            onBackPressed()
+
+
+            false
+        } else super.onKeyDown(keyCode, event)
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector

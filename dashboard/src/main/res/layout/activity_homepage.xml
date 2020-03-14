@@ -6,17 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <androidx.fragment.app.FragmentContainerView-->
-<!--        android:id="@+id/fragment"-->
-<!--        android:name="com.davidm.ui.DashboardFragment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_container_view_tag"
+        />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -28,6 +22,7 @@
         app:fabAlignmentMode="center"
         app:fabAnimationMode="slide"
         app:hideOnScroll="true"
+        android:backgroundTint="@color/colorPrimaryDark"
         app:layout_scrollFlags="scroll|enterAlways"
         app:menu="@menu/bottom_nav_menu" />
 
