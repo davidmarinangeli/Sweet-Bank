@@ -9,7 +9,7 @@ I used Starling Bank APIs to fetch and send data to the Sandbox: this really hel
 Watch out, if you want to run the project, you will find out that the `NetworkUtils.kt` file is missing: it would contain the `BASE_URL` and the token, which is necessary to do all the APIs calls. 
 
 ## Software Architecture Pattern 🏛
-<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/AppStructure.png" width="300"/>
+<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/AppStructure.png" width="700"/>
 
 I used the MVVM pattern to make the code more readable, scalable and easily testable. To do this I divided the project into **view slices** and three layers:
 
