@@ -43,8 +43,8 @@
 
     <ImageView
         android:id="@+id/spendingCategoryBox"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/purchase_item_image_dim"
+        android:layout_height="@dimen/purchase_item_image_dim"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"

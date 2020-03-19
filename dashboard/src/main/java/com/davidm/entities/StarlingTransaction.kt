@@ -2,13 +2,12 @@ package com.davidm.entities
 
 import com.davidm.account.entities.Amount
 import com.squareup.moshi.Json
-import java.util.*
 
 data class Purchases(
-    val feedItems: List<Purchase>
+    val feedItems: List<StarlingTransaction>
 )
 
-data class Purchase(
+data class StarlingTransaction(
 
     val feedItemUid: String,
     val categoryUid: String,

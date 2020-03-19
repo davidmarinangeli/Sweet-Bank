@@ -3,17 +3,14 @@ package com.davidm.ui
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.davidm.account.entities.Account
-import com.davidm.account.entities.AccountBalance
 import com.davidm.account.repository.AccountRepository
-import com.davidm.entities.Purchase
+import com.davidm.entities.DateInterval
+import com.davidm.entities.StarlingTransaction
 import com.davidm.repository.DashboardRepository
 import com.davidm.utils.AmountConverter
 import com.davidm.utils.DashboardLocalMapper
 import kotlinx.coroutines.*
 import java.lang.Exception
-import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
@@ -31,39 +28,28 @@ class DashboardViewModel @Inject constructor(
 
     init {
         getAccountBalance()
-        getPurchases()
     }
 
-    private fun getPurchases() {
-
-        val calendar = Calendar.getInstance()
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-        val endDate = calendar.time
-
-        val startDate = run {
-            calendar.add(Calendar.DATE, -5)
-            calendar.time
-        }
+    fun getPurchases(dateInterval: DateInterval) {
 
         coroutineScope.launch {
             val result = withContext(Dispatchers.IO) {
 
                 try {
-
                     val accounts = accountRepository.retrieveAccounts()
 
                     dashboardRepository.retrievePurchases(
                         accounts.firstOrNull()!!,
-                        dateFormat.format(startDate),
-                        dateFormat.format(endDate)
+                        dateInterval.startDate,
+                        dateInterval.endDate
                     )
 
                 } catch (e: Exception) {
                     Log.e("network_error", e.message!!)
-                    emptyList<Purchase>()
+                    emptyList<StarlingTransaction>()
                 }
             }
-            updateView(purchaseList = result)
+            updateView(starlingTransactionList = result)
         }
     }
 
@@ -102,8 +88,8 @@ class DashboardViewModel @Inject constructor(
     }
 
 
-    private fun updateView(purchaseList: List<Purchase>) {
-        purchasesLiveData.postValue(purchaseList.map {
+    private fun updateView(starlingTransactionList: List<StarlingTransaction>) {
+        purchasesLiveData.postValue(starlingTransactionList.map {
             dashboardLocalMapper.convertPurchases(converter, it)
         })
     }

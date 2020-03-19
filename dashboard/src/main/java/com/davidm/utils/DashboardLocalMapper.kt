@@ -1,7 +1,7 @@
 package com.davidm.utils
 
 import com.davidm.account.entities.AccountBalance
-import com.davidm.entities.Purchase
+import com.davidm.entities.StarlingTransaction
 import com.davidm.entities.SpendingCategory
 import com.davidm.ui.R
 import java.text.NumberFormat
@@ -24,16 +24,16 @@ class DashboardLocalMapper {
         val currency: String
     )
 
-    fun convertPurchases(converter: AmountConverter, purchase: Purchase): LocalPurchase {
+    fun convertPurchases(converter: AmountConverter, starlingTransaction: StarlingTransaction): LocalPurchase {
 
         val formatter: NumberFormat = NumberFormat.getCurrencyInstance()
         val dateFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
         val resultFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
-        formatter.currency = Currency.getInstance(purchase.amount.currency)
-        val finalDate = dateFormatter.parse(purchase.transactionTime)
+        formatter.currency = Currency.getInstance(starlingTransaction.amount.currency)
+        val finalDate = dateFormatter.parse(starlingTransaction.transactionTime)
 
-        val icon: Int = when (purchase.spendingCategory) {
+        val icon: Int = when (starlingTransaction.spendingCategory) {
             SpendingCategory.EATING_OUT -> R.drawable.hamburger_solid
             SpendingCategory.INCOME -> R.drawable.money_wave
             SpendingCategory.PAYMENTS -> R.drawable.money_wave
@@ -41,19 +41,19 @@ class DashboardLocalMapper {
         }
 
         val absoluteAmount =
-            formatter.format(converter.convertAmountToDouble(purchase.amount.minorUnits))
-        val amount = when (purchase.spendingCategory) {
+            formatter.format(converter.convertAmountToDouble(starlingTransaction.amount.minorUnits))
+        val amount = when (starlingTransaction.spendingCategory) {
             SpendingCategory.INCOME -> "+ $absoluteAmount"
             else -> "- $absoluteAmount"
         }
 
-        val amountColor = when (purchase.spendingCategory) {
+        val amountColor = when (starlingTransaction.spendingCategory) {
             SpendingCategory.INCOME -> R.color.positiveAmountGreen
             else -> R.color.negativeAmountRed
         }
 
         return LocalPurchase(
-            counterPartyName = purchase.counterPartyName,
+            counterPartyName = starlingTransaction.counterPartyName,
             amount = amount,
             amountColor = amountColor,
             spendingCategoryIcon = icon,

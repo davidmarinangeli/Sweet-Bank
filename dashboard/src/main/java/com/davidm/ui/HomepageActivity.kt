@@ -34,30 +34,12 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
         setContentView(R.layout.activity_homepage)
         setSupportActionBar(bottomAppBar)
 
-
-//        val bottomDialogFragment =
-//            PayeeCreationFragment()
-//
-//        fab.setOnClickListener {
-//            if (view_pager.currentItem == 1) {
-//                bottomDialogFragment.show(
-//                    supportFragmentManager,
-//                    "new_payee_dialog_fragment"
-//                )
-//            }
-//
-//        }
-
         // initial position
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container_view_tag, dashboardFragment).commit()
 
         bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
         bottomAppBar.replaceMenu(R.menu.bottom_nav_menu)
-
-//
-//        bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-//        bottomAppBar.replaceMenu(R.menu.bottom_second_menu)
 
     }
 
@@ -80,6 +62,7 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
 
             }
             R.id.navigation_home -> {
+                supportFragmentManager.popBackStack()
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container_view_tag, dashboardFragment).commit()
                 bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER

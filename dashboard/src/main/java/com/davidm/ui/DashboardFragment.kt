@@ -1,18 +1,21 @@
 package com.davidm.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
-import com.davidm.utils.DashboardLocalMapper
+import androidx.viewpager2.widget.ViewPager2
+import com.davidm.utils.DateIntervalHelper
+import com.facebook.shimmer.Shimmer
+import com.facebook.shimmer.ShimmerFrameLayout
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.fragment_dashboard.*
+import java.text.DateFormatSymbols
+import java.util.*
 import javax.inject.Inject
 
 class DashboardFragment : Fragment() {
@@ -21,7 +24,9 @@ class DashboardFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var viewModel: DashboardViewModel
-    lateinit var adapter: DashboardListAdapter
+    lateinit var parentListAdapter: DashboardParentListAdapter
+    lateinit var nestedListAdapter: DashboardNestedListAdapter
+    lateinit var calendar: Calendar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
@@ -40,36 +45,52 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.purchase_list)
+        val viewPager = view.findViewById<ViewPager2>(R.id.parent_list)
         val balanceCardTextView = view.findViewById<TextView>(R.id.balance_amount)
         val balanceCentsTextView = view.findViewById<TextView>(R.id.cents)
-        val emptyListImageView = view.findViewById<ImageView>(R.id.empty_list_illustration)
 
+        calendar = Calendar.getInstance()
         viewModel =
-            ViewModelProvider(this, viewModelFactory).get(DashboardViewModel::class.java)
-
-        adapter = DashboardListAdapter()
-
-        recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                recyclerView.context,
-                DividerItemDecoration.VERTICAL
-            )
-        )
+            ViewModelProvider(
+                activity!!.viewModelStore,
+                viewModelFactory
+            ).get(DashboardViewModel::class.java)
 
         viewModel.accountBalanceLiveData.observe(viewLifecycleOwner, Observer {
             balanceCardTextView.text = it.amount
             balanceCentsTextView.text = it.amountCents
         })
 
-        viewModel.purchasesLiveData.observe(viewLifecycleOwner, Observer {
-            if(it.isEmpty()){
-                emptyListImageView.visibility = View.VISIBLE
-            } else {
-                adapter.data = it
+        nestedListAdapter = DashboardNestedListAdapter()
+
+        val data: List<DashboardParentListAdapter.ParentListItem> =
+            DateIntervalHelper().generateDateIntervalList().map {
+                DashboardParentListAdapter.ParentListItem(it.month, nestedListAdapter)
+            }
+
+        parentListAdapter = DashboardParentListAdapter(data, context!!, true)
+        viewPager.adapter = parentListAdapter
+
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+
+                date_interval_text.text = DateFormatSymbols().months[position]
+
+                viewModel.getPurchases(DateIntervalHelper().generateDateIntervalList()[position])
+                parentListAdapter.loading = true
+                parentListAdapter.notifyDataSetChanged()
             }
         })
 
+        viewModel.purchasesLiveData.observe(viewLifecycleOwner, Observer {
+            nestedListAdapter.data = it
+            parentListAdapter.data[viewPager.currentItem].listAdapter = nestedListAdapter
+            parentListAdapter.loading = false
+            parentListAdapter.notifyDataSetChanged()
+
+        })
+
     }
+
+
 }
