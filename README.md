@@ -11,6 +11,12 @@ Watch out, if you want to run the project, you will find out that the `NetworkUt
 
 ## Version [1.1.0](https://github.com/davidmarinangeli/Sweet-Bank/releases/tag/v1.1.0) released
 
+I released the first "big" update of the app implementing a `Viewpager` that contains 12 elements ( one per month ): every element downloads the transactions for that month, displaying a Shimmer Animation first and a placeholder or a list of results after.
+
+Since the horizontal scroll now let the user browse the transactions month by month, the payees section has been moved and can be opened from the navigation button ( bottom right of the screen ).
+
+<img style="float: left;" src="https://user-images.githubusercontent.com/19487461/77102839-c4ff1700-6a19-11ea-8639-cef3b8df9b7e.gif" height="300"/>
+
 ## Software Architecture Pattern 🏛
 <img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/AppStructure.png" width="700"/>
 
@@ -39,8 +45,7 @@ I made a quick low-fidelity prototype of the app's menus with all the things I w
 
 I decided to use a `BottomAppBar` as a navigation component. It can be used also to host future features.
 
-<img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_dashboard.png" height="300"/><img style="float: left;" src="https://user-images.githubusercontent.com/19487461/77102839-c4ff1700-6a19-11ea-8639-cef3b8df9b7e.gif" height="300"/>
-
+<img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_dashboard.png" height="300"/>
 
 <img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_payees.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_payees.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_payees.png" height="300"/>
 
@@ -48,7 +53,7 @@ The Payee creation has been developed with the `Bottom Sheet Dialog` official li
 
 <img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/payee_creation.png" height="300"/>
 
-From the Payee List the user can navigate to the Payee detail that shows its general data, the accounts and so on. The view is composed of a  `CollapsingToolbarLayout` , two `RecyclerViews` and sections' labels, all wrapped in a `NestedScrollView`.
+From the Payee List the user can navigate to the Payee detail that shows its general data, the accounts and so on. The view is composed of a  `CollapsingToolbarLayout` , two `RecyclerViews` and other views, all wrapped in a `NestedScrollView`.
 
 <img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_payee_profile.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/payee_profile.png" height="300"/>
 
@@ -63,6 +68,7 @@ I used some libraries such as:
  7. Google Android Material
  8. JUnit4 / Coroutine-test
  9. Mockk
+ 10. Shimmer Animation for Android ( Facebook )
 
 ## Next updates 
 
@@ -80,17 +86,21 @@ I used some libraries such as:
 
 🟢 Payee profile
 
+🟢 Paged List on transactions ( Dashboard )
+
+🟢 UI Testing - Payee creation
+
 🟡 Support for accounts with multiple currencies, balances and transactions
 
 🟡 Unit Testing - Dashboard date and currency converter
 
 🟡 Unit Testing - Dashboard ViewModel
 
-🟡 UI Testing
+🟡 UI Testing - Payees profile
+
+🟡 UI Testing - Dashboard scroll
 
 🔴 Transaction creation
-
-🔴 Paged List on transactions ( Dashboard )
 
 🔴 Better handling of network errors / empty lists
 
