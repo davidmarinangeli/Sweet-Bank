@@ -8,6 +8,9 @@ I used Starling Bank APIs to fetch and send data to the Sandbox: this really hel
 
 Watch out, if you want to run the project, you will find out that the `NetworkUtils.kt` file is missing: it would contain the `BASE_URL` and the token, which is necessary to do all the APIs calls. 
 
+
+## Version [1.1.0](https://github.com/davidmarinangeli/Sweet-Bank/releases/tag/v1.1.0) released
+
 ## Software Architecture Pattern 🏛
 <img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/AppStructure.png" width="700"/>
 
@@ -36,7 +39,8 @@ I made a quick low-fidelity prototype of the app's menus with all the things I w
 
 I decided to use a `BottomAppBar` as a navigation component. It can be used also to host future features.
 
-<img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_dashboard.png" height="300"/>
+<img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_dashboard.png" height="300"/><img style="float: left;" src="https://user-images.githubusercontent.com/19487461/77102839-c4ff1700-6a19-11ea-8639-cef3b8df9b7e.gif" height="300"/>
+
 
 <img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_payees.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_payees.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_payees.png" height="300"/>
 
