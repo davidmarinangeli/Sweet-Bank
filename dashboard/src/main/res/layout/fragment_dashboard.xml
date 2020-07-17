@@ -6,54 +6,39 @@
     android:orientation="vertical"
     tools:context=".HomepageActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/card_background"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="-17dp"
-            android:contentDescription="@string/background"
-            android:scaleType="center"
-            android:src="@drawable/background"
-            android:translationY="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/card_background"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/background"
+                android:scaleType="center"
+                android:src="@drawable/background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <include
-            layout="@layout/balance_card_item"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/cardView2"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/card_background"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="-16dp"
-            app:cardCornerRadius="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_background">
-
+            <include
+                android:id="@+id/balance_card_item"
+                layout="@layout/balance_card_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                app:layout_constraintBottom_toBottomOf="@+id/card_background" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/date_interval_layout"
-                android:layout_width="match_parent"
-                android:layout_height="48dp">
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/cardview_borders"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/balance_card_item">
 
                 <ImageButton
                     android:id="@+id/back_button"
@@ -87,37 +72,34 @@
                 <TextView
                     android:id="@+id/date_interval_text"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_height="24dp"
                     android:text="01/03 - 07/03"
                     android:textSize="15sp"
+                    android:layout_marginTop="8dp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/next_button"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/back_button"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="4dp"
-                    android:background="@drawable/dropshadow_elevation"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                <!--                <View-->
+                <!--                    android:id="@+id/view"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="4dp"-->
+                <!--                    android:background="@drawable/dropshadow_elevation"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent" />-->
 
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/parent_list"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/date_interval_text" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/parent_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                android:paddingTop="30dp"
-                android:paddingBottom="16dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.cardview.widget.CardView>
-
-    </RelativeLayout>
 </RelativeLayout>

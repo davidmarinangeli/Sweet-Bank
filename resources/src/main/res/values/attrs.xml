@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AppTheme">
+        <attr name="iconViewStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="IconView">
+        <attr name="constantShadowTranslationY" format="dimension" />
+        <attr name="variableShadowTranslationY" format="dimension" />
+        <attr name="scaleDown" format="float" />
+        <attr name="bigBlurRadius" format="float" />
+        <attr name="smallBlurRadius" format="float" />
+    </declare-styleable>
+</resources>

@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.davidm.payees.ui.PayeeCreationFragment
 import com.davidm.payees.ui.PayeesFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import dagger.android.AndroidInjection
@@ -33,6 +34,16 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
 
         setContentView(R.layout.activity_homepage)
         setSupportActionBar(bottomAppBar)
+
+        val bottomDialogFragment =
+            PayeeCreationFragment()
+
+        fab.setOnClickListener {
+            bottomDialogFragment.show(
+                supportFragmentManager,
+                "new_payee_dialog_fragment"
+            )
+        }
 
         // initial position
         supportFragmentManager.beginTransaction()

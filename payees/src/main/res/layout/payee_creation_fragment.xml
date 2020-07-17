@@ -9,20 +9,21 @@
     tools:context=".ui.PayeeCreationFragment">
 
     <View
-        android:layout_marginTop="8dp"
         android:layout_width="42dp"
         android:layout_height="4dp"
         android:layout_gravity="center"
-        android:backgroundTint="@color/gray700"
-        android:background="@drawable/cardshape_background"/>
+        android:layout_marginTop="8dp"
+        android:background="@drawable/cardshape_background"
+        android:backgroundTint="@color/gray700" />
+
     <TextView
         android:id="@+id/create_new_payee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/bold"
         android:text="@string/create_a_new_payee"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -67,8 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/lastNameEditText"
@@ -83,8 +84,8 @@
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phoneNumberEditText"
@@ -103,8 +104,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/businessNameEditText"
@@ -118,29 +119,38 @@
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/spinner_background"
         android:entries="@array/payee_type_array"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
         tools:listitem="@android:layout/simple_spinner_item" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/createButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
         android:elevation="2dp"
-        android:shadowColor="@color/colorAccent"
         android:text="@string/create"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         app:backgroundTint="@color/colorAccent"
         app:icon="@drawable/ic_person_add_black_24dp"
-        app:iconTint="@android:color/white"
+        app:iconTint="@android:color/white" />
+
+    <components.SweetButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"
         android:layout_gravity="end"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"/>
 
 </LinearLayout>
