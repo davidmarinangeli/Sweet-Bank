@@ -69,6 +69,7 @@ I used some libraries such as:
  8. JUnit4 / Coroutine-test
  9. Mockk
  10. Shimmer Animation for Android ( Facebook )
+ 11. MotionLayout 
 
 ## Next updates 
 
