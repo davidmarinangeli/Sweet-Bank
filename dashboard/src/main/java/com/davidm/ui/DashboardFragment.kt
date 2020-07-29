@@ -5,20 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.davidm.utils.DateIntervalHelper
-import com.facebook.shimmer.Shimmer
-import com.facebook.shimmer.ShimmerFrameLayout
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import java.text.DateFormatSymbols
 import java.util.*
 import javax.inject.Inject
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), MotionLayout.TransitionListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -48,6 +47,8 @@ class DashboardFragment : Fragment() {
         val viewPager = view.findViewById<ViewPager2>(R.id.parent_list)
         val balanceCardTextView = view.findViewById<TextView>(R.id.balance_amount)
         val balanceCentsTextView = view.findViewById<TextView>(R.id.cents)
+
+        motion_layout.setTransitionListener(this)
 
         calendar = Calendar.getInstance()
         viewModel =
@@ -90,6 +91,19 @@ class DashboardFragment : Fragment() {
 
         })
 
+    }
+
+    override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
+    }
+
+    override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
+    }
+
+    override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
+    }
+
+    override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
+        (requireActivity() as HomepageActivity).switchBottomAppBarVisibility()
     }
 
 

@@ -54,6 +54,13 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
 
     }
 
+    fun switchBottomAppBarVisibility() {
+        if (bottomAppBar.isShown)
+            bottomAppBar.performHide()
+        else
+            bottomAppBar.performShow()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.bottom_nav_menu, menu)
