@@ -3,8 +3,7 @@
 
     <Transition
         motion:constraintSetEnd="@layout/fragment_dashboard_end"
-        motion:constraintSetStart="@layout/fragment_dashboard"
-        motion:duration="1000">
+        motion:constraintSetStart="@layout/fragment_dashboard">
         <OnSwipe
             motion:dragDirection="dragDown"
             motion:touchAnchorId="@+id/balance_card_item" />

@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageButton
+                    android:contentDescription="@null"
                     android:id="@+id/back_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,6 +66,7 @@
                     app:layout_constraintTop_toTopOf="@+id/date_interval_text" />
 
                 <ImageButton
+                    android:contentDescription="@null"
                     android:id="@+id/next_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -83,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:layout_marginTop="8dp"
-                    android:text="01/03 - 07/03"
+                    android:text="@string/tools_month"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/next_button"

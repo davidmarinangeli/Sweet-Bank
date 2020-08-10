@@ -103,7 +103,7 @@ class DashboardFragment : Fragment(), MotionLayout.TransitionListener {
     }
 
     override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-        (requireActivity() as HomepageActivity).switchBottomAppBarVisibility()
+        (requireActivity() as HomepageActivity).switchBottomAppBarVisibility(p0?.progress == 1.0f)
     }
 
 

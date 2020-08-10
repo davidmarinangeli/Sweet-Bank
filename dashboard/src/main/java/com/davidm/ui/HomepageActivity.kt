@@ -1,7 +1,6 @@
 package com.davidm.ui
 
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -54,11 +53,12 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
 
     }
 
-    fun switchBottomAppBarVisibility() {
-        if (bottomAppBar.isShown)
+    fun switchBottomAppBarVisibility(isAnimationCompleted: Boolean) {
+        if (isAnimationCompleted)
             bottomAppBar.performHide()
         else
             bottomAppBar.performShow()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

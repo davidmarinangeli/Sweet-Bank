@@ -3,4 +3,5 @@
     <string name="icon_of_the_transaction">icon of the transaction</string>
     <string name="empty_list">empty List</string>
     <string name="no_result_string">No results were found for %s</string>
+    <string name="tools_month">February</string>
 </resources>
