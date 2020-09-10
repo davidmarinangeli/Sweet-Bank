@@ -15,7 +15,6 @@ I released the first "big" update of the app implementing a `Viewpager` that con
 
 Since the horizontal scroll now let the user browse the transactions month by month, the payees section has been moved and can be opened from the navigation button ( bottom right of the screen ).
 
-<img style="float: left;" src="https://user-images.githubusercontent.com/19487461/77102839-c4ff1700-6a19-11ea-8639-cef3b8df9b7e.gif" height="300"/>
 <img style="float: left;" src="https://github.com/davidmarinangeli/Sweet-Bank/blob/master/screenshots%20and%20cover%20images/20200729_091518%201.gif" height="300"/>
 
 
