@@ -9,9 +9,9 @@ I used Starling Bank APIs to fetch and send data to the Sandbox: this really hel
 Watch out, if you want to run the project, you will find out that the `NetworkUtils.kt` file is missing: it would contain the `BASE_URL` and the token, which is necessary to do all the APIs calls. 
 
 
-## Version [1.1.0](https://github.com/davidmarinangeli/Sweet-Bank/releases/tag/v1.1.0) released
+## Version [1.2.0](https://github.com/davidmarinangeli/Sweet-Bank/releases/tag/1.2.0) released
 
-I released the first "big" update of the app implementing a `Viewpager` that contains 12 elements ( one per month ): every element downloads the transactions for that month, displaying a Shimmer Animation first and a placeholder or a list of results after.
+I released the second update of the app, implementing a Motion Layout animation in the dashboard that hides the Balance Card when the user scrolls the Transaction List. Instead, the 1.10 added a `Viewpager` that contains 12 elements ( one per month ): every element downloads the transactions for that month, displaying a Shimmer Animation first and a placeholder or a list of results after.
 
 Since the horizontal scroll now let the user browse the transactions month by month, the payees section has been moved and can be opened from the navigation button ( bottom right of the screen ).
 
