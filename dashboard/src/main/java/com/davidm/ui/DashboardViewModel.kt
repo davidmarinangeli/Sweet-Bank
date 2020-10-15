@@ -15,8 +15,7 @@ import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
     private val dashboardRepository: DashboardRepository,
-    private val accountRepository: AccountRepository,
-    val map: Map<String, DashboardRepository>
+    private val accountRepository: AccountRepository
 ) : ViewModel() {
 
     private val coroutineScope = CoroutineScope(Job() + Dispatchers.Main)

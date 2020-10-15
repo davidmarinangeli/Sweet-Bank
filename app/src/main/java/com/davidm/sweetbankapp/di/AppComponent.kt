@@ -28,7 +28,6 @@ import javax.inject.Singleton
     ]
 )
 interface AppComponent : AndroidInjector<SweetBank> {
-
     @Component.Factory
     interface Factory {
         fun create(@BindsInstance application: Application): AppComponent

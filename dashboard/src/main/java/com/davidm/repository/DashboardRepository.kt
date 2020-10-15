@@ -6,7 +6,9 @@ import com.davidm.network.DashboardApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class DashboardRepository @Inject constructor(
     private val dashboardApi: DashboardApi
 ) {

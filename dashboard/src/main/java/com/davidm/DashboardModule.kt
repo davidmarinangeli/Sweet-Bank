@@ -12,7 +12,7 @@ abstract class DashboardModule {
     @ContributesAndroidInjector()
     abstract fun contributeDashboardInjector(): HomepageActivity
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector()
     abstract fun contributeDashboardFragmentInjector(): DashboardFragment
 
 }
