@@ -10,7 +10,6 @@ import javax.inject.Inject
 
 class SweetBank : Application(), HasAndroidInjector {
 
-    lateinit var component: AppComponent
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
@@ -21,7 +20,9 @@ class SweetBank : Application(), HasAndroidInjector {
             .create(this)
         component.inject(this)
     }
-
     override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
 
+    companion object {
+        lateinit var component: AppComponent
+    }
 }

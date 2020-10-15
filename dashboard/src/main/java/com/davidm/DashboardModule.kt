@@ -9,7 +9,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class DashboardModule {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector()
     abstract fun contributeDashboardInjector(): HomepageActivity
 
     @ContributesAndroidInjector

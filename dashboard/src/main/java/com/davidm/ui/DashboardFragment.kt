@@ -22,6 +22,9 @@ class DashboardFragment : Fragment(), MotionLayout.TransitionListener {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var vm: DashboardViewModel
+
     private lateinit var viewModel: DashboardViewModel
     lateinit var parentListAdapter: DashboardParentListAdapter
     lateinit var nestedListAdapter: DashboardNestedListAdapter
