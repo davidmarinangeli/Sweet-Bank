@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
 import kotlinx.android.synthetic.main.empty_list_item.view.*
@@ -24,15 +23,15 @@ class DashboardParentListAdapter(
 
 
     inner class DashboardLoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val shimmer: ShimmerFrameLayout = itemView.shimmer_view_container
+        val shimmer: ShimmerFrameLayout = itemView.shimmerContainer
     }
 
     inner class DashboardParentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val list: RecyclerView = itemView.purchase_list
+        val list: RecyclerView = itemView.transactionList
     }
 
     inner class DashboardEmptyListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val emptyListTextView: TextView = itemView.no_results
+        val emptyListTextView: TextView = itemView.noResultText
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

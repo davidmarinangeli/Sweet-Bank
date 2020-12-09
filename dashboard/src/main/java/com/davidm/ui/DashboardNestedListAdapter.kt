@@ -19,9 +19,9 @@ class DashboardNestedListAdapter : RecyclerView.Adapter<DashboardNestedListAdapt
         }
 
     inner class DashboardNestedListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val mCounterParty: TextView = itemView.title
-        val mDate: TextView = itemView.date
-        val mAmount: TextView = itemView.amount
+        val mCounterParty: TextView = itemView.transactionTitle
+        val mDate: TextView = itemView.shimmerDate
+        val mAmount: TextView = itemView.shimmerAmount
         val mSpendingCategory: ImageView = itemView.spendingCategoryBox
     }
 

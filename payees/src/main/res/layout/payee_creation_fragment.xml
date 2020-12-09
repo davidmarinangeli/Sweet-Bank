@@ -24,7 +24,6 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:fontFamily="@font/bold"
         android:text="@string/create_a_new_payee"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorPrimaryDark"
@@ -136,21 +135,10 @@
         android:layout_marginBottom="24dp"
         android:elevation="2dp"
         android:text="@string/create"
-        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         app:backgroundTint="@color/colorAccent"
         app:icon="@drawable/ic_person_add_black_24dp"
         app:iconTint="@android:color/white" />
-
-    <components.SweetButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="8dp"
-        android:layout_gravity="end"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"/>
 
 </LinearLayout>

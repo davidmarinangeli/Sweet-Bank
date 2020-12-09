@@ -6,9 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <View
-        android:id="@+id/image"
+        android:id="@+id/shimmerImage"
         android:layout_width="@dimen/purchase_item_image_dim"
         android:layout_height="@dimen/purchase_item_image_dim"
         android:layout_marginStart="16dp"
@@ -21,36 +20,36 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/name"
+        android:id="@+id/shimmerTitle"
         android:layout_width="100dp"
         android:layout_height="17dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/cardshape_background"
         android:backgroundTint="@color/gray600"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toTopOf="@+id/image" />
+        app:layout_constraintStart_toEndOf="@+id/shimmerImage"
+        app:layout_constraintTop_toTopOf="@+id/shimmerImage" />
 
 
     <View
-        android:id="@+id/date"
+        android:id="@+id/shimmerDate"
         android:layout_width="80dp"
         android:layout_height="15dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/cardshape_background"
         android:backgroundTint="@color/gray600"
-        app:layout_constraintBottom_toBottomOf="@+id/image"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintBottom_toBottomOf="@+id/shimmerImage"
+        app:layout_constraintStart_toStartOf="@+id/shimmerTitle"
+        app:layout_constraintTop_toBottomOf="@+id/shimmerTitle" />
 
     <View
-        android:id="@+id/amount"
+        android:id="@+id/shimmerAmount"
         android:layout_width="75dp"
         android:layout_height="30dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/cardshape_background"
         android:backgroundTint="@color/gray600"
-        app:layout_constraintBottom_toBottomOf="@+id/date"
+        app:layout_constraintBottom_toBottomOf="@+id/shimmerDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/name" />
+        app:layout_constraintTop_toTopOf="@+id/shimmerTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

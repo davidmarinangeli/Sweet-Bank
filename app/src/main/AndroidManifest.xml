@@ -10,7 +10,7 @@
         android:name=".SweetBank"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Base.Theme.SweetBankTheme">
         <activity android:name="com.davidm.ui.HomepageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

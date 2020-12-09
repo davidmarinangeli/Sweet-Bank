@@ -20,7 +20,6 @@
             android:layout_height="wrap_content"
             android:paddingVertical="16dp"
             android:paddingHorizontal="16dp"
-            android:fontFamily="@font/bold"
             android:text="@string/general"
             android:textSize="20sp" />
 
@@ -30,8 +29,8 @@
             android:background="@color/gray100" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:elevation="2dp"
             android:id="@+id/profile_info_list"
+            android:elevation="2dp"
             android:name="com.davidm.payees_profile.PayeeFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +50,6 @@
             android:paddingVertical="16dp"
             android:paddingHorizontal="16dp"
             android:elevation="2dp"
-            android:fontFamily="@font/bold"
             android:text="@string/accounts"
             android:textSize="20sp" />
 

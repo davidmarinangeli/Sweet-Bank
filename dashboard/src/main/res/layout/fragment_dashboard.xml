@@ -1,124 +1,138 @@
-<androidx.constraintlayout.motion.widget.MotionLayout
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/motion_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layoutDescription="@xml/motion"
-    tools:showPaths="true"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_dashboard_scene"
+    tools:showPaths="true">
 
-        <ImageView
-            android:id="@+id/card_background"
+    <ImageView
+        android:id="@+id/card_background"
+        android:layout_width="match_parent"
+        android:layout_height="264dp"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/background"
+        android:scaleType="center"
+        android:src="#7CBFEA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/accountBalanceTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/account_balance"
+        style="@style/TextAppearance.AccountBalanceTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/balanceAmountMain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="start"
+        style="@style/TextAppearance.AccountBalanceMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountBalanceTitle"
+        tools:text="$32,550" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/balanceAmountCents"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="4dp"
+        style="@style/TextAppearance.AccountBalanceCents"
+        app:layout_constraintBottom_toBottomOf="@+id/balanceAmountMain"
+        app:layout_constraintStart_toEndOf="@+id/balanceAmountMain"
+        app:layout_constraintTop_toTopOf="@+id/balanceAmountMain"
+        tools:text=".66" />
+
+    <RelativeLayout
+        android:id="@+id/list_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/cardview_borders"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balanceAmountMain">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/monthBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentTop="true"
-            android:contentDescription="@string/background"
-            android:scaleType="center"
-            android:src="@drawable/background"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/previousMonthButton"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="@android:color/transparent"
+                android:contentDescription="@null"
+                android:rotation="180"
+                android:src="@drawable/ic_right_chevron"
+                app:layout_constraintBottom_toBottomOf="@+id/transactionsMonthTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/transactionsMonthTitle" />
+
+            <ImageView
+                android:id="@+id/nextMonthButton"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@android:color/transparent"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_right_chevron"
+                app:layout_constraintBottom_toBottomOf="@+id/transactionsMonthTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/transactionsMonthTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/transactionsMonthTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/tools_month"
+                android:textAppearance="@style/TextAppearance.TransactionsMonthTitle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/nextMonthButton"
+                app:layout_constraintStart_toEndOf="@+id/previousMonthButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/dropShadowView"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_below="@+id/monthBarLayout"
+            android:background="@drawable/dropshadow_elevation"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <include
-            android:id="@+id/balance_card_item"
-            layout="@layout/balance_card_item"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/card_background"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/card_background"
-            app:layout_constraintEnd_toEndOf="@+id/parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <RelativeLayout
-            android:id="@+id/list_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/balance_card_item"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/parentListViewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@+id/dropShadowView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="-24dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/cardview_borders"
-            app:layout_constraintTop_toBottomOf="@id/balance_card_item">
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </RelativeLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/datebar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageButton
-                    android:contentDescription="@null"
-                    android:id="@+id/back_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:backgroundTint="@android:color/transparent"
-                    android:rotation="180"
-                    android:src="@drawable/ic_chevron_right_black_24dp"
-                    android:tint="@color/gray400"
-                    app:layout_constraintBottom_toBottomOf="@+id/date_interval_text"
-                    app:layout_constraintEnd_toStartOf="@+id/date_interval_text"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/date_interval_text" />
-
-                <ImageButton
-                    android:contentDescription="@null"
-                    android:id="@+id/next_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:backgroundTint="@android:color/transparent"
-                    android:src="@drawable/ic_chevron_right_black_24dp"
-                    android:tint="@color/gray400"
-                    app:layout_constraintBottom_toBottomOf="@+id/date_interval_text"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/date_interval_text"
-                    app:layout_constraintTop_toTopOf="@+id/date_interval_text" />
-
-                <TextView
-                    android:id="@+id/date_interval_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/tools_month"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/next_button"
-                    app:layout_constraintStart_toEndOf="@+id/back_button"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="0dp"
-                    android:layout_height="4dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/dropshadow_elevation"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/date_interval_text" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/parent_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/datebar"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="-1dp"
-                android:layout_marginBottom="0dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </RelativeLayout>
-
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

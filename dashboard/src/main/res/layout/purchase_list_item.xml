@@ -7,38 +7,35 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/transactionTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         tools:text="Mario Rossi"
-        android:fontFamily="@font/regular"
         android:textSize="17sp"
         app:layout_constraintStart_toEndOf="@+id/spendingCategoryBox"
         app:layout_constraintTop_toTopOf="@+id/spendingCategoryBox" />
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/shimmerDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         tools:text="17/05/2020"
-        android:fontFamily="@font/regular"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/spendingCategoryBox"
-        app:layout_constraintStart_toStartOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintStart_toStartOf="@+id/transactionTitle"
+        app:layout_constraintTop_toBottomOf="@+id/transactionTitle" />
 
     <TextView
-        android:id="@+id/amount"
+        android:id="@+id/shimmerAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/bold"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/date"
+        app:layout_constraintBottom_toBottomOf="@+id/shimmerDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/title"
+        app:layout_constraintTop_toTopOf="@+id/transactionTitle"
         tools:text="$550,80" />
 
     <ImageView
@@ -50,13 +47,13 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/ic_attach_money_black_24dp"
         android:padding="8dp"
-        android:tint="@color/colorAccentDark"
         android:background="@drawable/cardshape_background"
         android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/icon_of_the_transaction">
+        android:contentDescription="@string/icon_of_the_transaction"
+        app:tint="@color/colorAccentDark">
 
     </ImageView>
 

@@ -4,6 +4,9 @@
 
     <application>
         <activity android:name=".HomepageActivity" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
