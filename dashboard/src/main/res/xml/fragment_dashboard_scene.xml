@@ -16,15 +16,25 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
+            android:id="@+id/helloUserTitle"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="88dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
             android:id="@+id/accountBalanceTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="24dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintTop_toBottomOf="@id/helloUserTitle" />
         <Constraint
             android:id="@+id/balanceAmountMain"
             android:layout_width="0dp"
@@ -49,9 +59,51 @@
                 motion:attributeName="textSize"
                 motion:customFloatValue="20" />
         </Constraint>
+        <Constraint
+            android:id="@+id/orangeBlob"
+            motion:layout_constraintEnd_toEndOf="@+id/card_background"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/card_background"
+            android:layout_marginBottom="42dp"
+            android:layout_marginEnd="32dp" />
+        <Constraint
+            android:id="@+id/blueBlob"
+            android:layout_width="284dp"
+            android:layout_height="284dp"
+            android:layout_marginStart="180dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="104dp" />
+        <Constraint
+            android:id="@+id/pinkBlob"
+            motion:layout_constraintEnd_toEndOf="@+id/card_background"
+            android:layout_width="180dp"
+            android:layout_height="284dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/card_background"
+            android:layout_marginEnd="64dp" />
+        <Constraint
+            android:id="@+id/grayBlob"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="120dp"
+            android:layout_height="250dp"
+            android:layout_marginBottom="64dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/card_background"
+            />
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/helloUserTitle"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
             android:id="@+id/accountBalanceTitle"
             android:layout_width="match_parent"
@@ -61,12 +113,12 @@
             android:visibility="invisible"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintBottom_toTopOf="parent" />
         <Constraint
             android:id="@+id/balanceAmountMain"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:gravity="start"
             android:paddingEnd="8dp"
@@ -94,5 +146,36 @@
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/balanceAmountMain"/>
+        <Constraint
+            android:id="@+id/blueBlob"
+            android:layout_width="284dp"
+            android:layout_height="284dp"
+            android:layout_marginStart="180dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="104dp" />
+        <Constraint
+            android:id="@+id/orangeBlob"
+            motion:layout_constraintEnd_toEndOf="@+id/card_background"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/card_background"
+            android:layout_marginBottom="72dp"
+            android:layout_marginEnd="32dp" />
+        <Constraint
+            android:id="@+id/pinkBlob"
+            motion:layout_constraintEnd_toEndOf="@+id/card_background"
+            android:layout_width="180dp"
+            android:layout_height="284dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/card_background"
+            android:layout_marginBottom="64dp"
+            android:layout_marginEnd="64dp" />
+        <Constraint
+            android:id="@+id/grayBlob"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="120dp"
+            android:layout_height="250dp"
+            android:layout_marginBottom="72dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/card_background"/>
     </ConstraintSet>
 </MotionScene>

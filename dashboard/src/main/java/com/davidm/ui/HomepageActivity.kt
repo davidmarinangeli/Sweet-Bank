@@ -1,21 +1,18 @@
 package com.davidm.ui
 
-import android.app.Activity
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.davidm.payees.ui.PayeeCreationFragment
 import com.davidm.payees.ui.PayeesFragment
 import com.davidm.ui.databinding.ActivityHomepageBinding
-import com.davidm.ui.databinding.FragmentDashboardBinding
-import com.google.android.material.bottomappbar.BottomAppBar
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import kotlinx.android.synthetic.main.activity_homepage.*
 import javax.inject.Inject
 
 
@@ -36,8 +33,12 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-
         _binding = ActivityHomepageBinding.inflate(layoutInflater)
+
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
         setContentView(binding.root)
 
 //        *** TEMPORARY DEACTIVATION OF SOME FEATURES BECAUSE OF NEW UI ***

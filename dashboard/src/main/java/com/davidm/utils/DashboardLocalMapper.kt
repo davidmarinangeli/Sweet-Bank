@@ -14,8 +14,9 @@ class DashboardLocalMapper {
         val counterPartyName: String,
         val amount: String,
         val amountColor: Int,
-        val spendingCategoryIcon: Int,
-        val date: String
+        val spendingCategoryColor: Int,
+        val date: String,
+        val spendingCategoryText: String
     )
 
     data class LocalAccountBalance(
@@ -24,7 +25,10 @@ class DashboardLocalMapper {
         val currency: String
     )
 
-    fun convertPurchases(converter: AmountConverter, starlingTransaction: StarlingTransaction): LocalPurchase {
+    fun convertPurchases(
+        converter: AmountConverter,
+        starlingTransaction: StarlingTransaction
+    ): LocalPurchase {
 
         val formatter: NumberFormat = NumberFormat.getCurrencyInstance()
         val dateFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
@@ -32,12 +36,24 @@ class DashboardLocalMapper {
 
         formatter.currency = Currency.getInstance(starlingTransaction.amount.currency)
         val finalDate = dateFormatter.parse(starlingTransaction.transactionTime)
+        val finalDateString = if (finalDate != null) {
+            resultFormat.format(finalDate)
+        } else {
+            "Error"
+        }
 
-        val icon: Int = when (starlingTransaction.spendingCategory) {
-            SpendingCategory.EATING_OUT -> R.drawable.hamburger_solid
-            SpendingCategory.INCOME -> R.drawable.money_wave
-            SpendingCategory.PAYMENTS -> R.drawable.money_wave
-            SpendingCategory.GENERAL -> R.drawable.coins_solid
+        val spendingCategoryColor: Int = when (starlingTransaction.spendingCategory) {
+            SpendingCategory.EATING_OUT -> R.color.colorAccent
+            SpendingCategory.INCOME -> R.color.colorPrimaryDark
+            SpendingCategory.PAYMENTS -> R.color.spendingCategoryPink
+            SpendingCategory.GENERAL -> R.color.colorPrimary
+        }
+
+        val spendingCategoryText: String = when (starlingTransaction.spendingCategory) {
+            SpendingCategory.EATING_OUT -> "Eating Out"
+            SpendingCategory.INCOME -> "Income"
+            SpendingCategory.PAYMENTS -> "Payments"
+            SpendingCategory.GENERAL -> "General"
         }
 
         val absoluteAmount =
@@ -56,8 +72,9 @@ class DashboardLocalMapper {
             counterPartyName = starlingTransaction.counterPartyName,
             amount = amount,
             amountColor = amountColor,
-            spendingCategoryIcon = icon,
-            date = resultFormat.format(finalDate!!)
+            spendingCategoryColor = spendingCategoryColor,
+            date = finalDateString,
+            spendingCategoryText = spendingCategoryText
 
         )
 

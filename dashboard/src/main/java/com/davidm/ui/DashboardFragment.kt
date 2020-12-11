@@ -71,6 +71,15 @@ class DashboardFragment : Fragment() {
         binding.parentListViewPager.adapter = parentListAdapter
         binding.parentListViewPager.isUserInputEnabled = false
 
+
+        viewModel.userLiveData.observe(viewLifecycleOwner, {
+            binding.helloUserTitle.text = getString(
+                R.string.hello_user_text,
+                it.firstName
+            )
+        })
+        viewModel.getUserInfo()
+
         binding.previousMonthButton.setOnClickListener {
             binding.parentListViewPager.setCurrentItem(
                 binding.parentListViewPager.currentItem - 1,
@@ -96,7 +105,7 @@ class DashboardFragment : Fragment() {
             }
         })
 
-        viewModel.purchasesLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.purchasesLiveData.observe(viewLifecycleOwner, {
             nestedListAdapter.data = it
             parentListAdapter.data[binding.parentListViewPager.currentItem].listAdapter =
                 nestedListAdapter

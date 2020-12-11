@@ -3,7 +3,9 @@ package com.davidm.ui
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.davidm.account.entities.User
 import com.davidm.account.repository.AccountRepository
+import com.davidm.account.repository.UserRepository
 import com.davidm.entities.DateInterval
 import com.davidm.entities.StarlingTransaction
 import com.davidm.repository.DashboardRepository
@@ -15,7 +17,8 @@ import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
     private val dashboardRepository: DashboardRepository,
-    private val accountRepository: AccountRepository
+    private val accountRepository: AccountRepository,
+    private val userRepository: UserRepository
 ) : ViewModel() {
 
     private val coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -25,6 +28,7 @@ class DashboardViewModel @Inject constructor(
 
     val purchasesLiveData = MutableLiveData<List<DashboardLocalMapper.LocalPurchase>>()
     val accountBalanceLiveData = MutableLiveData<DashboardLocalMapper.LocalAccountBalance>()
+    val userLiveData = MutableLiveData<User>()
 
     init {
         getAccountBalance()
@@ -50,6 +54,25 @@ class DashboardViewModel @Inject constructor(
                 }
             }
             updateView(starlingTransactionList = result)
+        }
+    }
+
+    fun getUserInfo() {
+        coroutineScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                try {
+                    userRepository.retrieveUser()
+                } catch (e: Exception) {
+                    Log.e("user_retrieve_error", e.message!!)
+                    null
+                }
+            }
+
+            if (result != null) {
+                userLiveData.postValue(
+                    result
+                )
+            }
         }
     }
 

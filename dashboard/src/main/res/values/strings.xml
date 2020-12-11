@@ -5,4 +5,7 @@
     <string name="no_result_string">No results were found for %s</string>
     <string name="tools_month">February</string>
     <string name="account_balance">Account Balance</string>
+    <string name="hello_user_text_test">Hello, David</string>
+    <string name="hello_user_text">Hello, %s</string>
+    <string name="hello_placeholder">Hello!</string>
 </resources>

@@ -10,46 +10,100 @@
     <ImageView
         android:id="@+id/card_background"
         android:layout_width="match_parent"
-        android:layout_height="264dp"
+        android:layout_height="300dp"
         android:layout_alignParentTop="true"
         android:contentDescription="@string/background"
         android:scaleType="center"
-        android:src="#7CBFEA"
+        android:src="@color/colorPrimaryLight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/blueBlob"
+        android:layout_width="284dp"
+        android:layout_height="284dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="104dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/blue_blob"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/orangeBlob"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="42dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/orange_blob"
+        app:layout_constraintBottom_toBottomOf="@+id/card_background"
+        app:layout_constraintEnd_toEndOf="@+id/card_background" />
+
+    <ImageView
+        android:id="@+id/pinkBlob"
+        android:layout_width="180dp"
+        android:layout_height="284dp"
+        android:layout_marginEnd="64dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/pink_blob"
+        app:layout_constraintBottom_toBottomOf="@+id/card_background"
+        app:layout_constraintEnd_toEndOf="@+id/card_background" />
+
+    <ImageView
+        android:id="@+id/grayBlob"
+        android:layout_width="120dp"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/gray_white_blob"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="@+id/card_background"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/helloUserTitle"
+        style="@style/TextAppearance.UserTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/hello_user_text_test" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/accountBalanceTitle"
+        style="@style/TextAppearance.AccountBalanceTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="24dp"
         android:text="@string/account_balance"
-        style="@style/TextAppearance.AccountBalanceTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/helloUserTitle" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/balanceAmountMain"
+        style="@style/TextAppearance.AccountBalanceMain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="4dp"
         android:gravity="start"
-        style="@style/TextAppearance.AccountBalanceMain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountBalanceTitle"
         tools:text="$32,550" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/balanceAmountCents"
+        style="@style/TextAppearance.AccountBalanceCents"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginBottom="4dp"
-        style="@style/TextAppearance.AccountBalanceCents"
         app:layout_constraintBottom_toBottomOf="@+id/balanceAmountMain"
         app:layout_constraintStart_toEndOf="@+id/balanceAmountMain"
         app:layout_constraintTop_toTopOf="@+id/balanceAmountMain"
@@ -59,8 +113,8 @@
         android:id="@+id/list_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
         android:background="@drawable/cardview_borders"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,8 +128,8 @@
 
             <ImageView
                 android:id="@+id/previousMonthButton"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="16dp"
                 android:backgroundTint="@android:color/transparent"
                 android:contentDescription="@null"
@@ -87,8 +141,8 @@
 
             <ImageView
                 android:id="@+id/nextMonthButton"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@android:color/transparent"
                 android:contentDescription="@null"
@@ -99,12 +153,14 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/transactionsMonthTitle"
+                style="@style/TextAppearance.TransactionsMonthTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_margin="16dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="center_vertical"
                 android:text="@string/tools_month"
-                android:textAppearance="@style/TextAppearance.TransactionsMonthTitle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/nextMonthButton"
                 app:layout_constraintStart_toEndOf="@+id/previousMonthButton"
@@ -115,7 +171,7 @@
         <View
             android:id="@+id/dropShadowView"
             android:layout_width="match_parent"
-            android:layout_height="4dp"
+            android:layout_height="8dp"
             android:layout_below="@+id/monthBarLayout"
             android:background="@drawable/dropshadow_elevation"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,14 +181,11 @@
             android:id="@+id/parentListViewPager"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_below="@+id/dropShadowView"
+            android:layout_below="@+id/monthBarLayout"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:orientation="horizontal" />
     </RelativeLayout>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

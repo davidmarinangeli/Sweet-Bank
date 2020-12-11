@@ -9,6 +9,8 @@
         android:id="@+id/transactionList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        shimmer:listitem="@layout/purchase_list_item"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </FrameLayout>

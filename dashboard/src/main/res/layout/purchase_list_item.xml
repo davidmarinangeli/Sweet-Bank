@@ -1,60 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    android:background="@drawable/purchase_item_background"
+    android:padding="16dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/transactionTitle"
+        style="@style/TextAppearance.MdcTypographyStyles.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        tools:text="Mario Rossi"
-        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/shimmerDate"
         app:layout_constraintStart_toEndOf="@+id/spendingCategoryBox"
-        app:layout_constraintTop_toTopOf="@+id/spendingCategoryBox" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Mario Rossi" />
 
     <TextView
         android:id="@+id/shimmerDate"
+        style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        tools:text="17/05/2020"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@+id/spendingCategoryBox"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/transactionTitle"
-        app:layout_constraintTop_toBottomOf="@+id/transactionTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/transactionTitle"
+        tools:text="17/05/2020" />
 
     <TextView
         android:id="@+id/shimmerAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:textSize="20sp"
+        style="@style/TextAppearance.MdcTypographyStyles.Headline6"
         app:layout_constraintBottom_toBottomOf="@+id/shimmerDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/transactionTitle"
         tools:text="$550,80" />
 
-    <ImageView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/spendingCategoryBox"
-        android:layout_width="@dimen/purchase_item_image_dim"
-        android:layout_height="@dimen/purchase_item_image_dim"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_attach_money_black_24dp"
-        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/cardshape_background"
-        android:backgroundTint="@color/colorAccent"
+        app:backgroundTint="@color/colorAccent"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:text="Food"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/icon_of_the_transaction"
-        app:tint="@color/colorAccentDark">
-
-    </ImageView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
