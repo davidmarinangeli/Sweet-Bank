@@ -118,7 +118,7 @@
             android:id="@+id/balanceAmountMain"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:gravity="start"
             android:paddingEnd="8dp"
@@ -153,7 +153,7 @@
             android:layout_marginStart="180dp"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="104dp" />
+            android:layout_marginTop="84dp" />
         <Constraint
             android:id="@+id/orangeBlob"
             motion:layout_constraintEnd_toEndOf="@+id/card_background"
@@ -175,7 +175,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="120dp"
             android:layout_height="250dp"
-            android:layout_marginBottom="72dp"
+            android:layout_marginBottom="96dp"
             motion:layout_constraintBottom_toBottomOf="@+id/card_background"/>
     </ConstraintSet>
 </MotionScene>

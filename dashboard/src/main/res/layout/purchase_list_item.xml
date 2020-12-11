@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
+    android:id="@+id/purchaseCardContainer"
     android:background="@drawable/purchase_item_background"
     android:padding="16dp">
 
@@ -41,16 +42,16 @@
         app:layout_constraintTop_toTopOf="@+id/transactionTitle"
         tools:text="$550,80" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <ImageView
         android:id="@+id/spendingCategoryBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="@drawable/cardshape_background"
-        app:backgroundTint="@color/colorAccent"
+        app:tint="@color/colorAccent"
+        android:backgroundTint="@color/colorAccent"
         android:paddingHorizontal="8dp"
         android:paddingVertical="8dp"
-        android:text="Food"
-        android:textColor="@color/colorAccent"
+        android:src="@drawable/ic_credit_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

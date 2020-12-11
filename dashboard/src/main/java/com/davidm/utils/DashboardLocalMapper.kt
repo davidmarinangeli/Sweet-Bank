@@ -15,8 +15,8 @@ class DashboardLocalMapper {
         val amount: String,
         val amountColor: Int,
         val spendingCategoryColor: Int,
+        val spendingCategoryDrawable: Int,
         val date: String,
-        val spendingCategoryText: String
     )
 
     data class LocalAccountBalance(
@@ -49,11 +49,11 @@ class DashboardLocalMapper {
             SpendingCategory.GENERAL -> R.color.colorPrimary
         }
 
-        val spendingCategoryText: String = when (starlingTransaction.spendingCategory) {
-            SpendingCategory.EATING_OUT -> "Eating Out"
-            SpendingCategory.INCOME -> "Income"
-            SpendingCategory.PAYMENTS -> "Payments"
-            SpendingCategory.GENERAL -> "General"
+        val spendingCategoryDrawable: Int = when (starlingTransaction.spendingCategory) {
+            SpendingCategory.EATING_OUT -> R.drawable.ic_hamburger
+            SpendingCategory.INCOME -> R.drawable.ic_download
+            SpendingCategory.PAYMENTS -> R.drawable.ic_money_bag
+            SpendingCategory.GENERAL -> R.drawable.ic_credit_card
         }
 
         val absoluteAmount =
@@ -73,10 +73,10 @@ class DashboardLocalMapper {
             amount = amount,
             amountColor = amountColor,
             spendingCategoryColor = spendingCategoryColor,
+            spendingCategoryDrawable = spendingCategoryDrawable,
             date = finalDateString,
-            spendingCategoryText = spendingCategoryText
 
-        )
+            )
 
     }
 

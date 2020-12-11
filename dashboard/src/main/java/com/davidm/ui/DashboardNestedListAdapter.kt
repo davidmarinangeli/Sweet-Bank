@@ -3,8 +3,10 @@ package com.davidm.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.davidm.utils.DashboardLocalMapper
@@ -23,7 +25,8 @@ class DashboardNestedListAdapter :
         val mCounterParty: TextView = itemView.transactionTitle
         val mDate: TextView = itemView.shimmerDate
         val mAmount: TextView = itemView.shimmerAmount
-        val mSpendingCategory: TextView = itemView.spendingCategoryBox
+        val mSpendingCategory: ImageView = itemView.spendingCategoryBox
+        val purchaseListItem: ConstraintLayout = itemView.purchaseCardContainer
     }
 
     override fun onCreateViewHolder(
@@ -41,15 +44,17 @@ class DashboardNestedListAdapter :
 
     override fun onBindViewHolder(holder: DashboardNestedListViewHolder, position: Int) {
         val item = data[position]
+        holder.purchaseListItem.animation =
+            AnimationUtils.loadAnimation(holder.itemView.context, R.anim.translate_recyclerview)
         holder.mCounterParty.text = item.counterPartyName
-        holder.mSpendingCategory.text = item.spendingCategoryText
         holder.mSpendingCategory.background.setTint(
             ContextCompat.getColor(
                 holder.itemView.context,
                 item.spendingCategoryColor
             )
         )
-        holder.mSpendingCategory.setTextColor(
+        holder.mSpendingCategory.setImageResource(item.spendingCategoryDrawable)
+        holder.mSpendingCategory.setColorFilter(
             ContextCompat.getColor(
                 holder.itemView.context,
                 item.spendingCategoryColor

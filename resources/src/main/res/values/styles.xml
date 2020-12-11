@@ -109,8 +109,8 @@
 
     <style name="TextAppearance.MdcTypographyStyles.Body1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textColor">@color/lightBlack</item>
-        <item name="fontFamily">@font/poppins</item>
-        <item name="android:fontFamily">@font/poppins</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
         <item name="android:textSize">16sp</item>
     </style>
 
