@@ -11,7 +11,6 @@
     <color name="purchaseItemBackground">@color/gray50</color>
     <color name="accountBalanceMainColor">@color/colorPrimaryDark</color>
 
-
     <color name="colorAccent">#F3B82A</color>
     <color name="colorAccentLight">#ffea60</color>
     <color name="colorAccentDark">#bc8800</color>
