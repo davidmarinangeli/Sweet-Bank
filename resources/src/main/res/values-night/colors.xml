@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryLight">#2251D6</color>
+    <color name="colorPrimary">#1B3FA5</color>
+    <color name="colorPrimaryDark">#102663</color>
+    <color name="surfaceColor">#0E181C</color>
+    <color name="colorOnSurface">@android:color/white</color>
+
+    <color name="mainTextColor">@color/gray400</color>
+    <color name="secondaryTextColor">@color/gray200</color>
+    <color name="purchaseItemBackground">#81414141</color>
+    <color name="accountBalanceMainColor">#7CBFEA</color>
+
+</resources>

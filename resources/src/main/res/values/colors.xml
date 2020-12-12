@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimaryLight">#97CCED</color>
     <color name="colorPrimary">#7CBFEA</color>
     <color name="colorPrimaryDark">#1B3FA5</color>
-    <color name="colorPrimaryLight">#7CBFEA</color>
+    <color name="surfaceColor">@android:color/white</color>
+    <color name="colorOnSurface">@android:color/black</color>
+
+    <color name="mainTextColor">@color/gray600</color>
+    <color name="secondaryTextColor">@color/gray500</color>
+    <color name="purchaseItemBackground">@color/gray50</color>
+    <color name="accountBalanceMainColor">@color/colorPrimaryDark</color>
+
 
     <color name="colorAccent">#F3B82A</color>
     <color name="colorAccentLight">#ffea60</color>
@@ -12,7 +20,9 @@
     <color name="negativeAmountRed">#ef5350</color>
 
     <color name="spendingCategoryPink">#E0436B</color>
+    <color name="spendingCategoryBlue">#2196F3</color>
 
+    <color name="fiftyPercentTransparency">#80FFFFFF</color>
     <color name="seventyPercentTransparency">#4DFFFFFF</color>
     <color name="eightyPercentTransparency">#32FFFFFF</color>
 
@@ -24,6 +34,5 @@
     <color name="gray600">#414141</color>
     <color name="gray700">#2F2F2F</color>
     <color name="black">#191919</color>
-    <color name="lightBlack">#4F4F4F</color>
 
 </resources>

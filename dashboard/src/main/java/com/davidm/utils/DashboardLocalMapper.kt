@@ -44,7 +44,7 @@ class DashboardLocalMapper {
 
         val spendingCategoryColor: Int = when (starlingTransaction.spendingCategory) {
             SpendingCategory.EATING_OUT -> R.color.colorAccent
-            SpendingCategory.INCOME -> R.color.colorPrimaryDark
+            SpendingCategory.INCOME -> R.color.spendingCategoryBlue
             SpendingCategory.PAYMENTS -> R.color.spendingCategoryPink
             SpendingCategory.GENERAL -> R.color.colorPrimary
         }
