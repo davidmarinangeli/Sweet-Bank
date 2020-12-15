@@ -1,7 +1,5 @@
 package com.davidm.utils
 
-import javax.inject.Inject
-import kotlin.math.ceil
 
 class AmountConverter {
 

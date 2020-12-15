@@ -5,11 +5,8 @@ import com.davidm.entities.StarlingTransaction
 import com.davidm.network.TransactionsApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class TransactionsRepository @Inject constructor(
+class TransactionsRepository (
     private val transactionsApi: TransactionsApi
 ) {
 

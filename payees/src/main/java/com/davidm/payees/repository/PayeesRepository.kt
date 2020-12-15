@@ -9,11 +9,9 @@ import com.squareup.moshi.Moshi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class PayeesRepository @Inject constructor(
+
+class PayeesRepository constructor(
     private val payeesApi: PayeesApi
 ) {
 

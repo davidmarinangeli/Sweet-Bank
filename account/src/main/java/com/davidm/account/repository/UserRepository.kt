@@ -4,11 +4,8 @@ import com.davidm.account.entities.User
 import com.davidm.account.network.UserApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class UserRepository @Inject constructor(
+class UserRepository (
     private val userApi: UserApi
 ) {
 

@@ -15,9 +15,8 @@ import kotlinx.coroutines.*
 import okhttp3.ResponseBody
 import retrofit2.Response
 import java.lang.Exception
-import javax.inject.Inject
 
-class PayeesViewModel @Inject constructor(
+class PayeesViewModel constructor(
     private val payeesRepository: PayeesRepository
 ) : ViewModel() {
 

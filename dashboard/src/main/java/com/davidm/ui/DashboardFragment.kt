@@ -2,57 +2,38 @@ package com.davidm.ui
 
 import android.Manifest
 import android.app.Activity.RESULT_OK
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.viewpager2.widget.ViewPager2
 import com.davidm.ui.databinding.FragmentDashboardBinding
 import com.davidm.utils.DateIntervalHelper
-import com.davidm.utils.ImageUtils
 import com.davidm.utils.ImageUtils.Companion.getRealPathFromURI
-import dagger.android.support.AndroidSupportInjection
-import java.io.ByteArrayOutputStream
+import org.koin.android.ext.android.inject
 import java.io.File
 import java.text.DateFormatSymbols
-import java.util.*
-import javax.inject.Inject
+import java.util.Calendar
 
 
 class DashboardFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    @Inject
-    lateinit var vm: DashboardViewModel
+    val viewModel by inject<DashboardViewModel>()
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: DashboardViewModel
     lateinit var parentListAdapter: DashboardParentListAdapter
     lateinit var nestedListAdapter: DashboardNestedListAdapter
     lateinit var calendar: Calendar
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidSupportInjection.inject(this)
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,11 +47,6 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         calendar = Calendar.getInstance()
-        viewModel =
-            ViewModelProvider(
-                requireActivity().viewModelStore,
-                viewModelFactory
-            ).get(DashboardViewModel::class.java)
 
         viewModel.accountBalanceLiveData.observe(viewLifecycleOwner, {
             binding.balanceAmountMain.text = it.amount

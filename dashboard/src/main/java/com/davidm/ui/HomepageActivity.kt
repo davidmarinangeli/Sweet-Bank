@@ -1,37 +1,20 @@
 package com.davidm.ui
 
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
-import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.davidm.payees.ui.PayeesFragment
 import com.davidm.ui.databinding.ActivityHomepageBinding
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import javax.inject.Inject
 
-
-class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
-
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+class HomepageActivity : AppCompatActivity() {
 
     private var _binding: ActivityHomepageBinding? = null
     private val binding get() = _binding!!
 
     private val dashboardFragment: DashboardFragment by lazy { DashboardFragment() }
-    private val payeesFragment: PayeesFragment by lazy { PayeesFragment() }
+//    private val payeesFragment: PayeesFragment by lazy { PayeesFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         _binding = ActivityHomepageBinding.inflate(layoutInflater)
 
@@ -107,5 +90,4 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
 //        super.onBackPressed()
 //    }
 
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 }

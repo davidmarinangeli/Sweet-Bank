@@ -18,10 +18,9 @@ import com.davidm.utils.DashboardLocalMapper
 import com.davidm.utils.ImageUtils
 import kotlinx.coroutines.*
 import java.io.File
-import javax.inject.Inject
 
 
-class DashboardViewModel @Inject constructor(
+class DashboardViewModel (
     private val transactionsRepository: TransactionsRepository,
     private val accountRepository: AccountRepository,
     private val userRepository: UserRepository,
@@ -57,7 +56,7 @@ class DashboardViewModel @Inject constructor(
 
                 } catch (e: Exception) {
                     Log.e("network_error", e.message!!)
-                    emptyList<StarlingTransaction>()
+                    emptyList()
                 }
             }
             updateView(starlingTransactionList = result)

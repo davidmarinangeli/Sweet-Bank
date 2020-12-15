@@ -24,8 +24,7 @@ dependencies {
     api("com.squareup.retrofit2:retrofit:$retrofit_version")
     api("com.squareup.okhttp3:logging-interceptor:$okhttp_version")
 
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "org.koin:koin-android:$koin_version"
 
     api "com.squareup.moshi:moshi:$moshi_version"
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"

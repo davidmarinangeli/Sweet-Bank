@@ -1,26 +1,26 @@
 package com.davidm.sweetbankapp
 
 import android.app.Application
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import com.davidm.sweetbankapp.di.AppComponent
-import com.davidm.sweetbankapp.di.DaggerAppComponent
-import javax.inject.Inject
+import com.davidm.account.repository.accountRepositoryModule
+import com.davidm.account.repository.userRepositoryModule
+import com.davidm.dashboardModule
+import com.davidm.network.di.baseNetworkModule
+import com.davidm.repository.transactionsRepositoryModule
+import com.davidm.sweetbankapp.di.viewModelModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
-class SweetBank : Application(), HasAndroidInjector {
-
-    lateinit var component: AppComponent
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
+class SweetBank : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
-        component = DaggerAppComponent.factory()
-            .create(this)
-        component.inject(this)
+        startKoin {
+            androidContext(this@SweetBank)
+            modules(
+                dashboardModule, viewModelModule, userRepositoryModule, baseNetworkModule,
+                accountRepositoryModule, transactionsRepositoryModule
+            )
+        }
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
 }
