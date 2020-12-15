@@ -61,8 +61,16 @@ class DashboardFragment : Fragment() {
             }
 
         parentListAdapter = DashboardParentListAdapter(data, requireContext(), true)
-        binding.parentListViewPager.adapter = parentListAdapter
-        binding.parentListViewPager.isUserInputEnabled = false
+
+        // starting point with the viewpager: we set the month to the current one and fetch the list
+        binding.parentListViewPager.apply {
+            adapter = parentListAdapter
+            isUserInputEnabled = false
+            currentItem = calendar.get(Calendar.MONTH) + 1
+        }
+        binding.transactionsMonthTitle.text =
+            DateFormatSymbols().months[binding.parentListViewPager.currentItem]
+        viewModel.getPurchases(DateIntervalHelper().generateDateIntervalList()[binding.parentListViewPager.currentItem])
 
 
         viewModel.userLiveData.observe(viewLifecycleOwner, {
