@@ -1,19 +1,36 @@
 package com.davidm.ui
 
+import android.Manifest
+import android.app.Activity.RESULT_OK
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.database.Cursor
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.viewpager2.widget.ViewPager2
 import com.davidm.ui.databinding.FragmentDashboardBinding
 import com.davidm.utils.DateIntervalHelper
+import com.davidm.utils.ImageUtils
+import com.davidm.utils.ImageUtils.Companion.getRealPathFromURI
 import dagger.android.support.AndroidSupportInjection
+import java.io.ByteArrayOutputStream
+import java.io.File
 import java.text.DateFormatSymbols
 import java.util.*
 import javax.inject.Inject
+
 
 class DashboardFragment : Fragment() {
 
@@ -80,6 +97,21 @@ class DashboardFragment : Fragment() {
         })
         viewModel.getUserInfo()
 
+        binding.profilePicture.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.CAMERA
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissions(
+                    arrayOf(Manifest.permission.CAMERA),
+                    0
+                )
+            } else {
+                openCameraIntent()
+            }
+        }
+
         binding.previousMonthButton.setOnClickListener {
             binding.parentListViewPager.setCurrentItem(
                 binding.parentListViewPager.currentItem - 1,
@@ -114,6 +146,53 @@ class DashboardFragment : Fragment() {
 
         })
 
+    }
+
+    private fun openCameraIntent() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(
+            takePictureIntent,
+            0
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 0) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(requireContext(), "camera permission granted", Toast.LENGTH_LONG)
+                    .show()
+                openCameraIntent()
+            } else {
+                Toast.makeText(requireContext(), "camera permission denied", Toast.LENGTH_LONG)
+                    .show()
+            }
+        }
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            val selectedImage = data?.extras?.get("data") as Bitmap
+            val finalFile = File(getRealPathFromURI(requireContext(), selectedImage))
+
+            viewModel.uploadProfilePicture(selectedImage, finalFile)
+
+            viewModel.profilePictureLiveData.observe(viewLifecycleOwner, {
+                if (it == null) {
+                    binding.profilePicture.imageTintMode = null
+                    binding.profilePicture.setImageBitmap(
+                        it
+                    )
+                }
+            })
+
+        }
     }
 
     override fun onDestroyView() {

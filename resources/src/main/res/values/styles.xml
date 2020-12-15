@@ -39,6 +39,11 @@
         <item name="errorTextColor">@color/negativeAmountRed</item>
     </style>
 
+    <style name="roundedImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
     <style name="EditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:lines">1</item>
     </style>

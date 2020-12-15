@@ -12,7 +12,7 @@ import com.davidm.account.repository.AccountRepositoryModule
 import com.davidm.account.repository.UserRepositoryModule
 import com.davidm.payees.PayeesModule
 import com.davidm.payees.repository.PayeesRepositoryModule
-import com.davidm.repository.DashboardRepositoryModule
+import com.davidm.repository.TransactionsRepositoryModule
 import javax.inject.Singleton
 
 @Singleton
@@ -24,7 +24,7 @@ import javax.inject.Singleton
         PayeesModule::class,
         ViewModelModule::class,
         AccountRepositoryModule::class,
-        DashboardRepositoryModule::class,
+        TransactionsRepositoryModule::class,
         PayeesRepositoryModule::class,
         UserRepositoryModule::class
     ]
