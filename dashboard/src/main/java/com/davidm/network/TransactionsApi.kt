@@ -4,7 +4,7 @@ import com.davidm.entities.Purchases
 import retrofit2.http.*
 import java.time.Instant
 
-interface DashboardApi {
+interface TransactionsApi {
 
     @GET("api/$API_VERSION/feed/account/{account}/category/{category}/transactions-between")
     suspend fun getPurchasesInAWeek(

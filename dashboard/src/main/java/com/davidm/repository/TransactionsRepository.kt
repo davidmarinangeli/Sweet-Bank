@@ -2,15 +2,15 @@ package com.davidm.repository
 
 import com.davidm.account.entities.Account
 import com.davidm.entities.StarlingTransaction
-import com.davidm.network.DashboardApi
+import com.davidm.network.TransactionsApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DashboardRepository @Inject constructor(
-    private val dashboardApi: DashboardApi
+class TransactionsRepository @Inject constructor(
+    private val transactionsApi: TransactionsApi
 ) {
 
     /**
@@ -23,7 +23,7 @@ class DashboardRepository @Inject constructor(
     ): List<StarlingTransaction> {
 
         return withContext(Dispatchers.IO) {
-            return@withContext dashboardApi.getPurchasesInAWeek(
+            return@withContext transactionsApi.getPurchasesInAWeek(
                 account.accountUid,
                 account.defaultCategory,
                 startDate,
