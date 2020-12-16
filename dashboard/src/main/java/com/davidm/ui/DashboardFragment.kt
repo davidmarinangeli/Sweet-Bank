@@ -139,7 +139,7 @@ class DashboardFragment : Fragment() {
             0
         )
     }
-
+W
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String?>,
@@ -168,7 +168,7 @@ class DashboardFragment : Fragment() {
             viewModel.uploadProfilePicture(selectedImage, finalFile)
 
             viewModel.profilePictureLiveData.observe(viewLifecycleOwner, {
-                if (it == null) {
+                if (it != null) {
                     binding.profilePicture.imageTintMode = null
                     binding.profilePicture.setImageBitmap(
                         it
