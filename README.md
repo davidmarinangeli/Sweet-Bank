@@ -53,7 +53,7 @@ From the Payee List the user can navigate to the Payee detail that shows its gen
 I used some libraries such as:
  1. Android Jetpack ( ViewModels, LiveData )
  2. ViewPager2
- 3. Dagger2
+ 3. Dagger2 ( now Koin ) 
  4. Retrofit
  5. Kotlin Coroutines
  6. Moshi
