@@ -16,7 +16,8 @@ import java.text.DateFormatSymbols
 class DashboardParentListAdapter(
     val data: List<ParentListItem>,
     val context: Context,
-    var loading: Boolean
+    var loading: Boolean,
+    var error: String? = null
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>(
     ) {
@@ -63,10 +64,14 @@ class DashboardParentListAdapter(
         when (holder) {
             is DashboardParentViewHolder -> holder.list.adapter = item.listAdapter
             is DashboardEmptyListViewHolder -> holder.emptyListTextView.text =
-                context.resources.getString(
-                    R.string.no_result_string,
-                    DateFormatSymbols().months[item.month]
-                )
+                if (error == null) {
+                    context.resources.getString(
+                        R.string.no_result_string,
+                        DateFormatSymbols().months[item.month]
+                    )
+                } else {
+                    error
+                }
             is DashboardLoadingViewHolder -> holder.shimmer.run { stopShimmer() }
 
         }
@@ -77,7 +82,8 @@ class DashboardParentListAdapter(
         return when {
             loading -> 0
             data[position].listAdapter.data.isEmpty() -> 1
-            else -> 2
+            (error != null) -> 1
+            else -> 3
         }
     }
 

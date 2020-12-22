@@ -20,7 +20,7 @@ import kotlinx.coroutines.*
 import java.io.File
 
 
-class DashboardViewModel (
+class DashboardViewModel(
     private val transactionsRepository: TransactionsRepository,
     private val accountRepository: AccountRepository,
     private val userRepository: UserRepository,
@@ -32,6 +32,7 @@ class DashboardViewModel (
     private val converter = AmountConverter()
 
     val purchasesLiveData = MutableLiveData<List<DashboardLocalMapper.LocalPurchase>>()
+    val fetchErrorLiveData = MutableLiveData<String>()
     val accountBalanceLiveData = MutableLiveData<DashboardLocalMapper.LocalAccountBalance>()
     val userLiveData = MutableLiveData<User>()
     val profilePictureLiveData = MutableLiveData<Bitmap>()
@@ -43,23 +44,26 @@ class DashboardViewModel (
     fun getPurchases(dateInterval: DateInterval) {
 
         coroutineScope.launch {
-            val result = withContext(Dispatchers.IO) {
+            withContext(Dispatchers.IO) {
 
                 try {
                     val accounts = accountRepository.retrieveAccounts()
 
-                    transactionsRepository.retrievePurchases(
+                    val result = transactionsRepository.retrievePurchases(
                         accounts.firstOrNull()!!,
                         dateInterval.startDate,
                         dateInterval.endDate
                     )
 
+
+                    fetchErrorLiveData.postValue(null)
+                    updateView(starlingTransactionList = result)
+
                 } catch (e: Exception) {
                     Log.e("network_error", e.message!!)
-                    emptyList()
+                    fetchErrorLiveData.postValue(e.message)
                 }
             }
-            updateView(starlingTransactionList = result)
         }
     }
 

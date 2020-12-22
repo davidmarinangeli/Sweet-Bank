@@ -45,7 +45,6 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         calendar = Calendar.getInstance()
 
         viewModel.accountBalanceLiveData.observe(viewLifecycleOwner, {
@@ -95,6 +94,12 @@ class DashboardFragment : Fragment() {
                 openCameraIntent()
             }
         }
+
+        viewModel.fetchErrorLiveData.observe(viewLifecycleOwner, {
+            parentListAdapter.error = it
+            parentListAdapter.loading = false
+            parentListAdapter.notifyDataSetChanged()
+        })
 
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.getPurchases(DateIntervalHelper().generateDateIntervalList()[binding.parentListViewPager.currentItem])
