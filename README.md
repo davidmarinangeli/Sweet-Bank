@@ -9,14 +9,17 @@ I used Starling Bank APIs to fetch and send data to the Sandbox: this really hel
 Watch out, if you want to run the project, you will find out that the `NetworkUtils.kt` file is missing: it would contain the `BASE_URL` and the token, which is necessary to do all the APIs calls. 
 
 
-## Version [1.2.0](https://github.com/davidmarinangeli/Sweet-Bank/releases/tag/1.2.0) released
+## Version [2.0.0](https://github.com/davidmarinangeli/Sweet-Bank/releases/tag/2.0.0) released
 
-I released the second update of the app, implementing a Motion Layout animation in the dashboard that hides the Balance Card when the user scrolls the Transaction List. Instead, the 1.10 added a `Viewpager` that contains 12 elements ( one per month ): every element downloads the transactions for that month, displaying a Shimmer Animation first and a placeholder or a list of results after.
+I decided to change the UI ( yeah, again ) and I got big help from my brother with all the new concepts and elements of the home screen. **Motion Layout** is now even more present here and the blobs move up along with the sheet.
 
-Since the horizontal scroll now let the user browse the transactions month by month, the payees section has been moved and can be opened from the navigation button ( bottom right of the screen ).
+The "Payee" part has been hidden ( temporary ) and the "profile picture" upload has been added instead ( with a picture rotation fix function ).
 
-<img style="float: left;" src="https://github.com/davidmarinangeli/Sweet-Bank/blob/master/screenshots%20and%20cover%20images/20200729_091518%201.gif" height="300"/>
+I changed the implementation of the styles by adding ☀️🌑 **Dark Theme** , using the `Theme.MaterialComponents.DayNight.NoActionBar`, and the typography system, using the `TextAppearance.MdcTypographyStyles`.
 
+I started using `Koin` instead of Dagger2, just because I wanted to try that: it's nice, for a project this small!
+
+<img src="https://github.com/davidmarinangeli/Sweet-Bank/blob/master/screenshots%20and%20cover%20images/dashboard_gif.gif" width=300 />
 
 ## Software Architecture Pattern 🏛
 <img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/AppStructure.png" width="700"/>
@@ -30,12 +33,10 @@ I used the MVVM pattern to make the code more readable, scalable and easily test
 As you can see from the above picture ( you can click it if you want to zoom the structure ) the app is divided into several modules that communicate altogether.
 
 ## Modules
-As for now, there are seven modules that fulfill a specific view or purpose:
+As for now, there are some modules that fulfill a specific view or purpose:
 1. *app* - the main one.
 2. *network* - handles the network global setup and, thanks to Dagger, provides the dependencies that are used in the whole project.
 3. *dashboard* - handles the whole stack for the **Dashboard Fragment** and part of the Main Activity. You can find there its entities, the APIs, the LocalMapper, the UI and so on.
-4. *detail* - WIP
-5. *account* - here can be found all the necessary to retrieve the Starling Bank's Account objects, reused everywhere in the app
 6. *payees* - the module that handles the whole stack for the **Payees Fragment** in the home: in the future will handle also the Payee creation.
 7. *resources* - take care and share all the common resources ( fonts, drawables, colors and so on )
 
@@ -44,25 +45,15 @@ I decided to split the project in more modules because of 1. shorter Build Time 
 ## UI 🎨
 I made a quick low-fidelity prototype of the app's menus with all the things I wanted to show. You can see the Dashboard Fragment and the Payees one from the pictures down below. Shoutout to my friend Claudio that gave me some help to improve the design!!
 
-I decided to use a `BottomAppBar` as a navigation component. It can be used also to host future features.
-
-<img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_dashboard.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_dashboard.png" height="300"/>
-
-<img style="float: center;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_payees.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/old_palette_payees.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/new_palette_payees.png" height="300"/>
-
-The Payee creation has been developed with the `Bottom Sheet Dialog` official library and using the standard `TextInputLayout` of Google Material.
-
-<img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/payee_creation.png" height="300"/>
+<img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/sweetbank_new_ui_1.png" width="200"/><img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/sweetbank_new_ui_2.png" width="200"/><img src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/sweetbank_new_ui_3.png" width="200"/>
 
 From the Payee List the user can navigate to the Payee detail that shows its general data, the accounts and so on. The view is composed of a  `CollapsingToolbarLayout` , two `RecyclerViews` and other views, all wrapped in a `NestedScrollView`.
-
-<img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/lf_payee_profile.png" height="300"/><img style="float: left;" src="https://raw.githubusercontent.com/davidmarinangeli/Sweet-Bank/master/screenshots%20and%20cover%20images/payee_profile.png" height="300"/>
 
 ## Libraries
 I used some libraries such as:
  1. Android Jetpack ( ViewModels, LiveData )
  2. ViewPager2
- 3. Dagger
+ 3. Dagger2 ( now Koin ) 
  4. Retrofit
  5. Kotlin Coroutines
  6. Moshi
@@ -71,38 +62,5 @@ I used some libraries such as:
  9. Mockk
  10. Shimmer Animation for Android ( Facebook )
  11. MotionLayout 
-
-## Next updates 
-
-🟢 Payee List - ADDED!
-
-🟢 Unit Testing - Payee Local mapper
-
-🟢 New Color palette
-
-🟢 Fixes on font size and text alignment on both Dashboard and Payee List
-
-🟢 Payee creation
-
-🟢 Better validation on Payee Creation
-
-🟢 Payee profile
-
-🟢 Paged List on transactions ( Dashboard )
-
-🟢 UI Testing - Payee creation
-
-🟡 Support for accounts with multiple currencies, balances and transactions
-
-🟡 Unit Testing - Dashboard date and currency converter
-
-🟡 Unit Testing - Dashboard ViewModel
-
-🟡 UI Testing - Payees profile
-
-🟡 UI Testing - Dashboard scroll
-
-🔴 Transaction creation
-
-🔴 Better handling of network errors / empty lists
+ 12. Koin
 
