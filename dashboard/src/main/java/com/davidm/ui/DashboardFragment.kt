@@ -38,7 +38,7 @@ class DashboardFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDashboardBinding.inflate(inflater)
         return binding.root
     }
@@ -96,6 +96,11 @@ class DashboardFragment : Fragment() {
             }
         }
 
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getPurchases(DateIntervalHelper().generateDateIntervalList()[binding.parentListViewPager.currentItem])
+            binding.swipeRefresh.isRefreshing = false
+        }
+
         binding.previousMonthButton.setOnClickListener {
             binding.parentListViewPager.setCurrentItem(
                 binding.parentListViewPager.currentItem - 1,
@@ -139,7 +144,7 @@ class DashboardFragment : Fragment() {
             0
         )
     }
-W
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String?>,
