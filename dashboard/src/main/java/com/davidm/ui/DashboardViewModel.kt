@@ -50,7 +50,7 @@ class DashboardViewModel(
                     val accounts = accountRepository.retrieveAccounts()
 
                     val result = transactionsRepository.retrievePurchases(
-                        accounts.firstOrNull()!!,
+                        accounts.first(),
                         dateInterval.startDate,
                         dateInterval.endDate
                     )
