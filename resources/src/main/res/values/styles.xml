@@ -4,18 +4,14 @@
     <style name="Base.Theme.SweetBankTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/poppins</item>
-
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <item name="android:windowBackground">@drawable/splash_screen</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
-        <item name="textAppearanceHeadline6">@style/TextAppearance.MdcTypographyStyles.Headline6
-        </item>
-        <item name="textAppearanceHeadline5">@style/TextAppearance.MdcTypographyStyles.Headline5
-        </item>
-        <item name="textAppearanceHeadline4">@style/TextAppearance.MdcTypographyStyles.Headline4
-        </item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.MdcTypographyStyles.Headline6</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.MdcTypographyStyles.Headline5</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.MdcTypographyStyles.Headline4</item>
         <item name="textAppearanceBody1">@style/TextAppearance.MdcTypographyStyles.Body1</item>
         <item name="textAppearanceBody2">@style/TextAppearance.MdcTypographyStyles.Body2</item>
     </style>
@@ -59,6 +55,7 @@
     <style name="TextAppearance.UserTitle" parent="TextAppearance.MdcTypographyStyles.Headline4">
         <item name="android:textSize">32sp</item>
         <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 

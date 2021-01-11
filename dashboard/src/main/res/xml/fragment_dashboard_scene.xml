@@ -61,12 +61,13 @@
         </Constraint>
         <Constraint
             android:id="@+id/orangeBlob"
-            motion:layout_constraintEnd_toEndOf="@+id/card_background"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/card_background"
             android:layout_marginBottom="42dp"
-            android:layout_marginEnd="32dp" />
+            android:layout_marginEnd="32dp"
+            motion:transitionEasing="cubic(0.4, 0.0, 1, 1)"
+            motion:layout_constraintBottom_toBottomOf="@+id/card_background"
+            motion:layout_constraintEnd_toEndOf="@+id/card_background" />
         <Constraint
             android:id="@+id/blueBlob"
             android:layout_width="284dp"
@@ -78,6 +79,7 @@
         <Constraint
             android:id="@+id/pinkBlob"
             motion:layout_constraintEnd_toEndOf="@+id/card_background"
+            motion:transitionEasing="cubic(0.4, 0.0, 1, 1)"
             android:layout_width="180dp"
             android:layout_height="284dp"
             motion:layout_constraintBottom_toBottomOf="@+id/card_background"
