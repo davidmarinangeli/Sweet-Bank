@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.viewpager2.widget.ViewPager2
 import com.davidm.ui.databinding.FragmentDashboardBinding
 import com.davidm.utils.DateIntervalHelper
@@ -95,10 +96,11 @@ class DashboardFragment : Fragment() {
 
         binding.profilePicture.setOnClickListener {
             permissionManager
-                .request(Permission.Camera)
+                .request(Permission.Camera, Permission.Storage)
                 .rationale("We need permission to use the camera")
-                .checkPermission { granted: Boolean ->
-                    if (granted) {
+                .checkDetailedPermission { result: Map<Permission, Boolean> ->
+                    if (result.all { it.value }) {
+                        // We have all the permissions
                         takePicture.launch(null)
                     }
                 }

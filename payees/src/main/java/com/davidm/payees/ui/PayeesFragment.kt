@@ -29,27 +29,10 @@ class PayeesFragment : Fragment() {
     }
 
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        val recyclerView = view.findViewById<RecyclerView>(R.id.payeeList)
-//
-//        payeeListAdapter = PayeeListAdapter()
-//        viewModel =
-//            ViewModelProvider(activity!!.viewModelStore, viewModelFactory).get(PayeesViewModel::class.java)
-//
-//        recyclerView.adapter = payeeListAdapter
-//        recyclerView.addItemDecoration(
-//            DividerItemDecoration(
-//                recyclerView.context,
-//                DividerItemDecoration.VERTICAL
-//            )
-//        )
-//
-//
-//        viewModel.payeesLiveData.observe(viewLifecycleOwner, Observer {
-//            payeeListAdapter.data = it
-//        })
-//
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+    }
 }
